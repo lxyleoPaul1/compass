@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>新生指北 · Compass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4EEE3;--paper-2:#EFE7D8;--ink:#1E1B2E;--ink-soft:#4A4660;--ink-faint:#8C8799;
+    --vermilion:#D8442B;--vermilion-deep:#B23320;--pine:#1F5C4A;--amber:#C98A1E;
+    --line:#D9CEBC;--card:#FBF7EF;--shadow:rgba(30,27,46,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Noto Sans SC",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;position:relative}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E")}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  header.top{border-bottom:1.5px solid var(--ink)}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand .logo{font-family:"Fraunces",serif;font-weight:900;font-size:26px;letter-spacing:-.5px}
+  .brand .logo .dot{color:var(--vermilion)}
+  .brand .cn{font-family:"Noto Serif SC",serif;font-weight:900;font-size:20px;letter-spacing:2px}
+  .nav{display:flex;gap:26px;font-size:14px;font-weight:500}
+  .nav a{color:var(--ink-soft);text-decoration:none;position:relative}
+  .nav a:hover{color:var(--ink)}
+  .nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--vermilion);transition:width .25s}
+  .nav a:hover::after{width:100%}
+  @media(max-width:720px){.nav{display:none}}
+  .hero{padding:54px 0 30px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .hero .kicker{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--vermilion);font-weight:700;margin-bottom:18px}
+  .hero h1{font-family:"Noto Serif SC",serif;font-weight:900;font-size:clamp(34px,6vw,62px);line-height:1.08;letter-spacing:-1px;max-width:14ch}
+  .hero h1 em{font-style:normal;color:var(--vermilion)}
+  .hero p.lead{margin-top:22px;max-width:50ch;font-size:17px;color:var(--ink-soft)}
+  .hero .meta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line);padding:7px 14px;border-radius:999px}
+  .pill .live{width:8px;height:8px;border-radius:50%;background:var(--pine);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(31,92,74,.45)}70%{box-shadow:0 0 0 8px rgba(31,92,74,0)}100%{box-shadow:0 0 0 0 rgba(31,92,74,0)}}
+  .hero .figure{position:absolute;right:-40px;top:30px;font-family:"Fraunces",serif;font-weight:900;font-size:230px;color:var(--ink);opacity:.04;line-height:1;user-select:none}
+  @media(max-width:860px){.hero .figure{display:none}}
+  .grid{display:grid;grid-template-columns:1fr 340px;gap:42px;padding:40px 0 80px;align-items:start}
+  @media(max-width:920px){.grid{grid-template-columns:1fr}}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:6px}
+  .section-head h2{font-family:"Noto Serif SC",serif;font-weight:900;font-size:24px;letter-spacing:.5px}
+  .section-head .sub{font-size:13px;color:var(--ink-faint)}
+  .tabs{display:flex;gap:4px;flex-wrap:wrap;margin:22px 0 6px;border-bottom:1.5px solid var(--ink)}
+  .tab{font-size:14.5px;font-weight:500;color:var(--ink-soft);background:none;border:none;cursor:pointer;padding:11px 16px;position:relative;font-family:inherit}
+  .tab .n{font-family:"Fraunces",serif;font-size:12px;color:var(--ink-faint);margin-left:6px;font-weight:600}
+  .tab.active{color:var(--ink);font-weight:700}
+  .tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-1.5px;height:3px;background:var(--vermilion)}
+  .toolbar{display:flex;align-items:center;justify-content:space-between;margin:16px 0;flex-wrap:wrap;gap:10px}
+  .count{font-size:13px;color:var(--ink-faint)}
+  .count b{color:var(--ink);font-family:"Fraunces",serif}
+  .sortsel{font-family:inherit;font-size:13px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 12px;color:var(--ink);cursor:pointer}
+  .feed{display:flex;flex-direction:column;gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);border-radius:12px;padding:20px 22px;transition:transform .2s,box-shadow .2s,border-color .2s;animation:rise .5s both}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -16px var(--shadow);border-left-color:var(--vermilion)}
+  .card .row1{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+  .card h3{font-family:"Noto Serif SC",serif;font-weight:600;font-size:18px;line-height:1.35;letter-spacing:.3px}
+  .tags{display:flex;gap:7px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+  .tag{font-size:11px;font-weight:700;padding:3px 9px;border-radius:6px;letter-spacing:.4px;white-space:nowrap}
+  .tag.lvlA{background:#F3DDD7;color:var(--vermilion-deep)}
+  .tag.lvlList{background:#DCE9E2;color:var(--pine)}
+  .tag.cat{background:var(--paper-2);color:var(--ink-soft)}
+  .tag.school{background:#F6E6C5;color:var(--amber)}
+  .card .org{font-size:13px;color:var(--ink-faint);margin-top:9px}
+  .card .majors{font-size:12.5px;color:var(--ink-soft);margin-top:4px}
+  .card .row2{display:flex;align-items:center;justify-content:space-between;margin-top:16px;gap:14px;flex-wrap:wrap}
+  .deadline{display:flex;align-items:baseline;gap:9px}
+  .deadline .dl-label{font-size:12px;color:var(--ink-faint)}
+  .deadline .dl-date{font-family:"Fraunces",serif;font-weight:600;font-size:15px}
+  .urg{font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:999px}
+  .urg.hot{background:var(--vermilion);color:#fff}
+  .urg.warn{background:#F6E6C5;color:var(--amber)}
+  .urg.calm{background:var(--paper-2);color:var(--ink-faint)}
+  .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{font-family:inherit;font-size:13px;font-weight:600;border-radius:8px;padding:8px 14px;cursor:pointer;border:1.5px solid var(--ink);background:transparent;color:var(--ink);transition:all .18s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+  .btn:hover{background:var(--ink);color:var(--paper)}
+  .btn.primary{background:var(--vermilion);border-color:var(--vermilion);color:#fff}
+  .btn.primary:hover{background:var(--vermilion-deep);border-color:var(--vermilion-deep)}
+  .btn.added{background:var(--pine);border-color:var(--pine);color:#fff;pointer-events:none}
+  .btn.ghost{border-color:var(--line);color:var(--ink-soft);font-weight:500}
+  .btn.ghost:hover{background:var(--paper-2);color:var(--ink)}
+  /* intramural inline panel */
+  .intra{margin-top:14px;border-top:1px dashed var(--line);padding-top:14px;display:none}
+  .intra.open{display:block;animation:rise .35s both}
+  .intra .hd{font-size:12.5px;font-weight:700;color:var(--pine);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+  .intra .kv{font-size:13px;margin:5px 0}
+  .intra .kv b{color:var(--ink)}
+  .intra ul{margin:6px 0 0 18px;font-size:12.5px;color:var(--ink-soft)}
+  .intra .caveat{font-size:11.5px;color:var(--ink-faint);margin-top:8px;font-style:italic}
+  .intra .loading{font-size:12.5px;color:var(--ink-faint)}
+  .rail{position:sticky;top:24px;display:flex;flex-direction:column;gap:22px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .panel.dark{background:var(--ink);color:var(--paper)}
+  .panel h4{font-family:"Noto Serif SC",serif;font-size:17px;font-weight:600;display:flex;align-items:center;gap:9px;margin-bottom:4px}
+  .panel.dark h4{color:#fff}
+  .panel .desc{font-size:12.5px;color:var(--ink-faint);margin-bottom:16px}
+  .panel.dark .desc{color:rgba(244,238,227,.6)}
+  .ob-cta{width:100%;font-family:inherit;font-size:14px;font-weight:600;background:var(--vermilion);color:#fff;border:none;border-radius:10px;padding:13px;cursor:pointer;transition:.18s}
+  .ob-cta:hover{background:var(--vermilion-deep)}
+  .ob-note{font-size:11.5px;color:var(--ink-faint);margin-top:10px;text-align:center}
+  .plan-empty{font-size:13px;color:var(--ink-faint);padding:14px 0;text-align:center;border:1.5px dashed var(--line);border-radius:10px}
+  .plan-item{display:flex;gap:11px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .plan-item:last-child{border-bottom:none}
+  .node{width:10px;height:10px;border-radius:50%;background:var(--vermilion);margin-top:6px;flex-shrink:0;position:relative}
+  .node::after{content:"";position:absolute;left:50%;top:14px;transform:translateX(-50%);width:1.5px;height:30px;background:var(--line)}
+  .plan-item:last-child .node::after{display:none}
+  .plan-body{flex:1}
+  .plan-body .t{font-size:13.5px;font-weight:500;line-height:1.4}
+  .plan-body .d{font-family:"Fraunces",serif;font-size:11.5px;color:var(--ink-faint);margin-top:2px}
+  .plan-rm{background:none;border:none;color:var(--ink-faint);cursor:pointer;font-size:16px;line-height:1;padding:2px}
+  .plan-rm:hover{color:var(--vermilion)}
+  .goal-input{display:flex;gap:8px;margin-bottom:10px}
+  .goal-input input{flex:1;font-family:inherit;font-size:13px;background:rgba(244,238,227,.1);border:1px solid rgba(244,238,227,.2);border-radius:8px;padding:10px 12px;color:var(--paper)}
+  .goal-input input::placeholder{color:rgba(244,238,227,.45)}
+  .goal-go{background:var(--vermilion);border:none;border-radius:8px;color:#fff;font-weight:700;padding:0 14px;cursor:pointer;font-family:inherit}
+  .ms{display:flex;gap:10px;padding:10px 0;align-items:flex-start;opacity:0;animation:rise .4s forwards;border-bottom:1px solid rgba(244,238,227,.12)}
+  .ms:last-child{border-bottom:none}
+  .ms .num{font-family:"Fraunces",serif;font-weight:900;font-size:13px;color:var(--vermilion);width:22px;flex-shrink:0;margin-top:2px}
+  .ms .mtext{font-size:12.5px;color:rgba(244,238,227,.92);line-height:1.45}
+  .ms .mtext .when{display:block;font-size:11px;color:rgba(244,238,227,.55);margin-top:2px;font-family:"Fraunces",serif}
+  .ms .mtext .tip{display:block;font-size:11.5px;color:rgba(244,238,227,.7);margin-top:3px}
+  .ai-note{font-size:11px;color:rgba(244,238,227,.5);margin-top:10px}
+  footer{border-top:1.5px solid var(--ink);padding:34px 0 60px;font-size:12.5px;color:var(--ink-faint)}
+  footer .frow{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  footer b{color:var(--ink-soft)}
+  .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--paper);padding:13px 22px;border-radius:10px;font-size:13.5px;font-weight:500;opacity:0;transition:.3s;z-index:50;box-shadow:0 14px 30px -10px rgba(0,0,0,.3)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap topbar">
+    <div class="brand"><span class="logo">Compass<span class="dot">.</span></span><span class="cn">新生指北</span></div>
+    <nav class="nav"><a href="#feed">竞赛雷达</a><a href="#">我的计划</a><a href="#">大学规划</a><a href="#">关于</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="figure">大一</div>
+    <div class="kicker">高考结束 — 大学第一年</div>
+    <h1>把"上大学"这件事，<br>拆成<em>看得见的下一步</em>。</h1>
+    <p class="lead">每周自动汇总教育部认可榜单里的高含金量竞赛，按你的专业和阶段，变成计划里一条条带时间的待办；还能问 AI 要不要先打校内赛。</p>
+    <div class="meta">
+      <span class="pill"><span class="live"></span><span id="updatedAt">本周已更新</span></span>
+      <span class="pill">数据源：高教学会榜单 + 多站聚合</span>
+      <span class="pill">截止时间人工复核</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="grid">
+    <main id="feed">
+      <div class="section-head"><h2>竞赛雷达</h2><span class="sub">按方向筛选 · 临近截止优先</span></div>
+      <div class="tabs" id="tabs"></div>
+      <div class="toolbar">
+        <span class="count">共 <b id="cnt">0</b> 项可报</span>
+        <select class="sortsel" id="sort">
+          <option value="deadline">按截止日期（最近）</option>
+          <option value="level">按含金量（A类优先）</option>
+        </select>
+      </div>
+      <div class="feed" id="feedlist"></div>
+    </main>
+
+    <aside class="rail">
+      <div class="panel">
+        <h4>① 先认识你</h4>
+        <p class="desc">3 分钟问卷：目标院校 / 专业 / 兴趣，之后推荐都贴着你来。</p>
+        <button class="ob-cta" onclick="toast('问卷模块开发中 · 个性化入口')">开始问卷 →</button>
+        <p class="ob-note">MVP 阶段：此入口暂为占位</p>
+      </div>
+      <div class="panel">
+        <h4>② 我的计划 <span id="planCount" style="font-family:Fraunces;color:var(--vermilion);font-weight:900"></span></h4>
+        <p class="desc">从竞赛雷达「加入计划」的目标会落在这里，并带上关键时间。</p>
+        <div id="planList"><div class="plan-empty">还没有目标 — 从左侧加入第一个吧</div></div>
+      </div>
+      <div class="panel dark">
+        <h4 style="color:#fff">③ 目标拆解</h4>
+        <p class="desc">说一个大目标，AI 帮你拆成带时间的可执行节点。</p>
+        <div class="goal-input">
+          <input id="goalInput" placeholder="例：大一拿一个国家级竞赛奖" />
+          <button class="goal-go" id="goalGo" onclick="decompose()">拆</button>
+        </div>
+        <div id="goalOut"></div>
+        <div class="ai-note" id="aiNote"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap frow">
+    <div><b>新生指北 Compass</b> · 非营利 · 仅覆盖运营成本<br>竞赛信息每周由抓取流程汇总，<b>报名截止时间经人工复核</b>，仍请以主办方官网为准。</div>
+    <div style="text-align:right">数据：中国高等教育学会榜单 + 我爱竞赛网等聚合<br>校内赛建议由 AI 生成，仅供参考，以本校官方通知为准</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API = ""; // 同源；本地无后端时自动用下方种子数据
+const CATS=[{k:"all",l:"全部"},{k:"综合",l:"综合"},{k:"经管",l:"经管"},{k:"理工",l:"理工科"},{k:"人文",l:"人文社科"},{k:"媒传",l:"媒传设计"}];
+// 离线兜底种子（后端可用时会被 /api/competitions 覆盖）
+const SEED=[
+ {name:"中国国际“互联网+”大学生创新创业大赛",cat:"综合",level:"A",org:"教育部",majors:"全专业·创业/项目",deadline:"2026-06-05",url:"#",schoolRound:true},
+ {name:"“挑战杯”全国大学生课外学术科技作品竞赛",cat:"综合",level:"A",org:"共青团中央 等",majors:"全专业·学术科技",deadline:"2026-06-18",url:"#",schoolRound:true},
+ {name:"全国大学生数学建模竞赛",cat:"理工",level:"A",org:"中国工业与应用数学学会",majors:"数学/统计/计算机/工科",deadline:"2026-09-12",url:"#",schoolRound:false},
+ {name:"全国大学生电子设计竞赛",cat:"理工",level:"A",org:"教育部·工信部",majors:"电子/电气/自动化",deadline:"2026-06-30",url:"#",schoolRound:false},
+ {name:"蓝桥杯全国软件和信息技术专业人才大赛",cat:"理工",level:"List",org:"工信部人才交流中心",majors:"计算机/软件/电子",deadline:"2026-06-08",url:"#",schoolRound:false},
+ {name:"“中国软件杯”大学生软件设计大赛",cat:"理工",level:"List",org:"工信部·教育部 等",majors:"软件/计算机",deadline:"2026-06-30",url:"#",schoolRound:false},
+ {name:"全国大学生市场调查与分析大赛（正大杯）",cat:"经管",level:"List",org:"中国商业统计学会",majors:"市场营销/经济/统计",deadline:"2026-06-15",url:"#",schoolRound:true},
+ {name:"全国大学生文化旅游与会展竞赛",cat:"经管",level:"List",org:"中国商业经济学会 等",majors:"会展/旅游管理",deadline:"2026-06-30",url:"#",schoolRound:false},
+ {name:"“外研社·国才杯”全国大学生外语能力大赛",cat:"人文",level:"List",org:"外研社",majors:"外语/全专业",deadline:"2026-06-12",url:"#",schoolRound:true},
+ {name:"全国大学生英语竞赛（NECCS）",cat:"人文",level:"List",org:"大学外语教学研究会",majors:"全专业·英语",deadline:"2026-06-03",url:"#",schoolRound:true},
+ {name:"全国大学生广告艺术大赛",cat:"媒传",level:"List",org:"教育部广告学教指委",majors:"广告/视传/数媒/新闻",deadline:"2026-06-20",url:"#",schoolRound:false},
+ {name:"中国大学生计算机设计大赛",cat:"媒传",level:"List",org:"相关教指委",majors:"数媒/动画/设计",deadline:"2026-07-05",url:"#",schoolRound:true},
+];
+const TEMPLATE=[
+ {step:"选定 1 个对口竞赛 + 找到 2–3 名队友",when:"6 月上旬",tip:"先看往届获奖作品定方向"},
+ {step:"完成选题调研，确定作品/项目方向",when:"7 月",tip:"找一位专业老师做指导"},
+ {step:"做出初版作品 / 完成校内初赛报名",when:"8 月",tip:"留足迭代时间"},
+ {step:"打磨答辩材料，冲省赛",when:"9–10 月",tip:"多练 5 分钟陈述"},
+ {step:"复盘整理成果，沉淀进简历/作品集",when:"赛后一周内",tip:""},
+];
+
+let DATA=[], activeCat="all", sortBy="deadline", plan=[];
+
+const now=new Date();
+const daysLeft=iso=>Math.round((new Date(iso)-now)/86400000);
+const fmt=iso=>{const d=new Date(iso);return (d.getMonth()+1)+"月"+d.getDate()+"日"};
+function urgency(iso){const n=daysLeft(iso);if(n<0)return{cls:"calm",txt:"已截止"};if(n<=7)return{cls:"hot",txt:"仅剩 "+n+" 天"};if(n<=21)return{cls:"warn",txt:n+" 天后截止"};return{cls:"calm",txt:n+" 天后截止"}}
+const catLabel=c=>({理工:"理工科",人文:"人文社科",媒传:"媒传设计"}[c]||c);
+
+async function loadData(){
+  try{
+    const r=await fetch(API+"/api/competitions");
+    if(!r.ok) throw 0;
+    const j=await r.json();
+    DATA=j.items||[];
+    if(j.updatedAt) document.getElementById("updatedAt").textContent="本周已更新 · "+j.updatedAt.slice(0,10);
+  }catch{ DATA=SEED; document.getElementById("updatedAt").textContent="本周已更新（离线示例）"; }
+  renderTabs(); renderFeed();
+}
+
+function renderTabs(){
+  const el=document.getElementById("tabs"); el.innerHTML="";
+  CATS.forEach(c=>{
+    const n=c.k==="all"?DATA.length:DATA.filter(x=>x.cat===c.k).length;
+    const b=document.createElement("button");
+    b.className="tab"+(activeCat===c.k?" active":"");
+    b.innerHTML=c.l+'<span class="n">'+n+'</span>';
+    b.onclick=()=>{activeCat=c.k;renderTabs();renderFeed()};
+    el.appendChild(b);
+  });
+}
+function renderFeed(){
+  let list=activeCat==="all"?[...DATA]:DATA.filter(c=>c.cat===activeCat);
+  if(sortBy==="deadline") list.sort((a,b)=>new Date(a.deadline||"2099")-new Date(b.deadline||"2099"));
+  else list.sort((a,b)=>(a.level==="A"?0:1)-(b.level==="A"?0:1)||new Date(a.deadline||"2099")-new Date(b.deadline||"2099"));
+  document.getElementById("cnt").textContent=list.length;
+  const f=document.getElementById("feedlist"); f.innerHTML="";
+  list.forEach((c,i)=>{
+    const u=c.deadline?urgency(c.deadline):{cls:"calm",txt:"时间待更新"};
+    const added=plan.some(p=>p.name===c.name);
+    const lvl=c.level==="A"?'<span class="tag lvlA">A类·榜单</span>':'<span class="tag lvlList">榜单赛事</span>';
+    const sr=c.schoolRound===true?'<span class="tag school">需校赛</span>':'';
+    const safe=c.name.replace(/'/g,"\\'");
+    const card=document.createElement("article");
+    card.className="card"; card.style.animationDelay=(i*0.04)+"s";
+    card.innerHTML=`
+      <div class="row1"><h3>${c.name}</h3>
+        <div class="tags">${lvl}<span class="tag cat">${catLabel(c.cat)}</span>${sr}</div></div>
+      <div class="org">主办 · ${c.org||"—"}</div>
+      <div class="majors">适合 · ${c.majors||"—"}</div>
+      <div class="row2">
+        <div class="deadline"><span class="dl-label">报名截止</span>
+          <span class="dl-date">${c.deadline?fmt(c.deadline):"待更新"}</span>
+          <span class="urg ${u.cls}">${u.txt}</span></div>
+        <div class="actions">
+          <button class="btn ghost" onclick="askIntra(this,'${safe}')">校内赛？</button>
+          ${c.url&&c.url!=='#'?`<a class="btn" href="${c.url}" target="_blank">报名入口</a>`:''}
+          <button class="btn ${added?'added':'primary'}" onclick="addPlan('${safe}')">${added?'已加入':'+ 加入计划'}</button>
+        </div></div>
+      <div class="intra"></div>`;
+    f.appendChild(card);
+  });
+}
+
+/* ④ 校内赛调研 */
+async function askIntra(btn,name){
+  const card=btn.closest(".card"); const box=card.querySelector(".intra");
+  if(box.classList.contains("open")){box.classList.remove("open");return;}
+  box.classList.add("open");
+  box.innerHTML='<div class="loading">正在让 AI 调研参赛路径…</div>';
+  try{
+    const r=await fetch(API+"/api/intramural",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({competition:name})});
+    if(!r.ok) throw new Error((await r.json().catch(()=>({}))).error||"服务不可用");
+    const d=await r.json();
+    box.innerHTML=`<div class="hd">▷ 参赛路径调研</div>
+      <div class="kv"><b>是否需先过校内赛：</b>${d.needsSchoolRound||"视学校而定"}</div>
+      <div class="kv"><b>校内赛大致时间：</b>${d.timing||"—"}</div>
+      ${Array.isArray(d.advice)&&d.advice.length?'<ul>'+d.advice.map(a=>`<li>${a}</li>`).join('')+'</ul>':''}
+      <div class="caveat">${d.caveat||"具体安排以本校官方通知为准。"}</div>`;
+  }catch(e){
+    box.innerHTML=`<div class="hd">▷ 参赛路径调研</div><div class="kv">AI 暂不可用（${e.message}）。</div>
+      <div class="caveat">多数全国性赛事会先经校内/校赛选拔，时间通常在赛季前 1–2 个月；请以本校教务处/团委通知为准。</div>`;
+  }
+}
+
+/* ② 计划 */
+function addPlan(name){
+  if(plan.some(p=>p.name===name))return;
+  const c=DATA.find(x=>x.name===name);
+  plan.push({name,deadline:c?.deadline});
+  renderFeed();renderPlan();
+  toast("已加入计划："+(name.length>14?name.slice(0,14)+"…":name));
+}
+function rmPlan(name){plan=plan.filter(p=>p.name!==name);renderFeed();renderPlan();}
+function renderPlan(){
+  const el=document.getElementById("planList");
+  document.getElementById("planCount").textContent=plan.length?("· "+plan.length):"";
+  if(!plan.length){el.innerHTML='<div class="plan-empty">还没有目标 — 从左侧加入第一个吧</div>';return;}
+  plan.sort((a,b)=>new Date(a.deadline||"2099")-new Date(b.deadline||"2099"));
+  el.innerHTML="";
+  plan.forEach(p=>{
+    const safe=p.name.replace(/'/g,"\\'");
+    const item=document.createElement("div"); item.className="plan-item";
+    item.innerHTML=`<div class="node"></div><div class="plan-body">
+      <div class="t">${p.name}</div>
+      <div class="d">${p.deadline?("报名截止 · "+fmt(p.deadline)+" · 距今 "+daysLeft(p.deadline)+" 天"):"时间待更新"}</div>
+      </div><button class="plan-rm" onclick="rmPlan('${safe}')">×</button>`;
+    el.appendChild(item);
+  });
+}
+
+/* ③ 目标拆解 */
+async function decompose(){
+  const v=document.getElementById("goalInput").value.trim()||"大一拿一个国家级竞赛奖";
+  const out=document.getElementById("goalOut"); const note=document.getElementById("aiNote");
+  const go=document.getElementById("goalGo");
+  out.innerHTML=""; note.textContent=""; go.textContent="…"; go.style.pointerEvents="none";
+  let ms=null, ai=false;
+  try{
+    const r=await fetch(API+"/api/decompose",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({goal:v})});
+    if(r.ok){const j=await r.json(); ms=j.milestones; ai=true;}
+  }catch{}
+  if(!ms||!ms.length){ ms=TEMPLATE; note.textContent="AI 暂不可用，已用通用模板（部署并配置 Kimi 后将按你的目标定制）。"; }
+  else { note.textContent="由 Kimi 按你的目标生成。"; }
+  go.textContent="拆"; go.style.pointerEvents="auto";
+  ms.forEach((m,i)=>{
+    const d=document.createElement("div"); d.className="ms"; d.style.animationDelay=(i*0.07)+"s";
+    d.innerHTML=`<div class="num">${String(i+1).padStart(2,'0')}</div>
+      <div class="mtext">${m.step||m.t||""}
+        ${m.when?`<span class="when">${m.when}</span>`:""}
+        ${m.tip?`<span class="tip">提示：${m.tip}</span>`:""}</div>`;
+    out.appendChild(d);
+  });
+}
+
+let tT; function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(tT);tT=setTimeout(()=>t.classList.remove("show"),2200);}
+document.getElementById("sort").onchange=e=>{sortBy=e.target.value;renderFeed();};
+loadData(); renderPlan();
+</script>
+</body>
+</html>

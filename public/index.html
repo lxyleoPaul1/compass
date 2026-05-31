@@ -1,0 +1,1175 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="editorial" data-font-scale="md">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>新生指北 · Compass</title>
+<script>
+/* 尽早应用主题，避免 FOUC */
+(function(){
+  try{
+    var p=JSON.parse(localStorage.getItem('compass_prefs')||'{}');
+    var ok=['editorial','nocturne','daylight','grove'];
+    if(p.theme&&ok.indexOf(p.theme)>=0)document.documentElement.setAttribute('data-theme',p.theme);
+    if(p.font_scale)document.documentElement.setAttribute('data-font-scale',p.font_scale);
+    if(p.reduce_motion)document.documentElement.setAttribute('data-reduce-motion','true');
+  }catch(e){}
+})();
+</script>
+<link rel="stylesheet" href="css/themes.css">
+<link rel="stylesheet" href="css/design-system.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* 间距/圆角/触摸见 design-system.css */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{font-family:"Noto Sans SC",system-ui,-apple-system,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;font-size:var(--text-base)}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:var(--noise-opacity,.5);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E")}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 var(--space-5);position:relative;z-index:1}
+  @media(max-width:480px){.wrap{padding:0 var(--space-4)}}
+  header.top{border-bottom:1.5px solid var(--ink);position:sticky;top:0;background:var(--paper);z-index:40}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) 0;gap:var(--space-3)}
+  .brand{display:flex;align-items:baseline;gap:var(--space-3);min-width:0}
+  .brand .logo{font-family:"Fraunces",serif;font-weight:900;font-size:var(--text-xl);letter-spacing:-.5px}
+  .brand .logo .dot{color:var(--vermilion)}
+  .brand .cn{font-family:"Noto Serif SC",serif;font-weight:900;font-size:var(--text-md);letter-spacing:2px}
+  .menu-btn{display:none;align-items:center;justify-content:center;width:var(--touch);height:var(--touch);background:none;border:1.5px solid var(--line);border-radius:var(--radius-md);cursor:pointer;color:var(--ink);flex-shrink:0}
+  .menu-btn span{display:block;width:18px;height:2px;background:var(--ink);position:relative}
+  .menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ink);transition:.2s}
+  .menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+  .menu-btn[aria-expanded=true] span{background:transparent}
+  .menu-btn[aria-expanded=true] span::before{top:0;transform:rotate(45deg)}
+  .menu-btn[aria-expanded=true] span::after{top:0;transform:rotate(-45deg)}
+  .nav{display:flex;gap:var(--space-5);font-size:var(--text-base);font-weight:500}
+  .nav a{color:var(--ink-soft);text-decoration:none;position:relative;padding:var(--space-2) 0;min-height:var(--touch);display:inline-flex;align-items:center}
+  .nav a:hover,.nav a:focus-visible{color:var(--ink);outline:none}
+  .nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--vermilion);transition:width .25s}
+  .nav a:hover::after,.nav a:focus-visible::after{width:100%}
+  @media(max-width:720px){
+    .menu-btn{display:flex}
+    .nav{position:fixed;top:57px;left:0;right:0;background:var(--paper);border-bottom:1.5px solid var(--ink);flex-direction:column;gap:0;padding:var(--space-2) var(--space-4);transform:translateY(-120%);opacity:0;pointer-events:none;transition:.25s;z-index:39}
+    .nav.open{transform:none;opacity:1;pointer-events:auto}
+    .nav a{padding:var(--space-3) 0;border-bottom:1px solid var(--line);width:100%}
+    .nav a:last-child{border-bottom:none}
+  }
+  .hero{padding:var(--space-6) 0 var(--space-5);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .hero .kicker{font-size:var(--text-sm);letter-spacing:3px;text-transform:uppercase;color:var(--vermilion);font-weight:700;margin-bottom:var(--space-4)}
+  .hero h1{font-family:"Noto Serif SC",serif;font-weight:900;font-size:clamp(28px,7vw,62px);line-height:1.08;letter-spacing:-1px;max-width:14ch}
+  .hero h1 em{font-style:normal;color:var(--vermilion)}
+  .hero p.lead{margin-top:var(--space-4);max-width:50ch;font-size:var(--text-md);color:var(--ink-soft)}
+  .hero .meta{margin-top:var(--space-5);display:flex;gap:var(--space-3);flex-wrap:wrap;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:500;color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line);padding:var(--space-2) var(--space-3);border-radius:999px}
+  .pill .live{width:8px;height:8px;border-radius:50%;background:var(--pine);animation:livePulse 2.2s infinite}
+  @keyframes livePulse{0%{box-shadow:0 0 0 0 var(--live-pulse)}70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  .hero .figure{position:absolute;right:-40px;top:30px;font-family:"Fraunces",serif;font-weight:900;font-size:230px;color:var(--ink);opacity:.04;line-height:1;user-select:none;pointer-events:none}
+  @media(max-width:860px){.hero .figure{display:none}}
+  .grid{display:grid;grid-template-columns:1fr 340px;gap:var(--space-6);padding:var(--space-5) 0 var(--space-6);align-items:start}
+  @media(max-width:920px){.grid{grid-template-columns:1fr;gap:var(--space-5)}}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:var(--space-2);gap:var(--space-3);flex-wrap:wrap}
+  .section-head h2{font-family:"Noto Serif SC",serif;font-weight:900;font-size:var(--text-xl);letter-spacing:.5px}
+  .section-head .sub{font-size:var(--text-sm);color:var(--ink-faint)}
+  .tabs-wrap{margin:var(--space-4) 0 var(--space-2);border-bottom:1.5px solid var(--ink);overflow:hidden}
+  .tabs{display:flex;gap:var(--space-1);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:1px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{font-size:var(--text-base);font-weight:500;color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line);border-bottom:none;cursor:pointer;padding:var(--space-3) var(--space-4);position:relative;font-family:inherit;border-radius:999px var(--radius-lg) 0 0;white-space:nowrap;flex-shrink:0;min-height:var(--touch);display:inline-flex;align-items:center}
+  .tab .n{font-family:"Fraunces",serif;font-size:var(--text-xs);color:var(--ink-faint);margin-left:var(--space-2);font-weight:600}
+  .tab.active{color:var(--ink);font-weight:700;background:var(--card);border-color:var(--ink);border-bottom:1.5px solid var(--card);margin-bottom:-1.5px;z-index:1}
+  .toolbar{display:flex;align-items:center;justify-content:space-between;margin:var(--space-4) 0;gap:var(--space-3);flex-wrap:wrap}
+  .toolbar-grow{flex:1;min-width:140px;max-width:280px}
+  .search-inp{width:100%;font-family:inherit;font-size:var(--text-base);background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);min-height:var(--touch);color:var(--ink)}
+  .search-inp:focus{outline:2px solid var(--vermilion);outline-offset:1px;border-color:var(--vermilion)}
+  .search-inp::placeholder{color:var(--ink-faint)}
+  .count{font-size:var(--text-sm);color:var(--ink-faint);width:100%}
+  @media(min-width:481px){.count{width:auto}}
+  .sortsel{font-family:inherit;font-size:var(--text-base);background:var(--card);border:1.5px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);color:var(--ink);cursor:pointer;min-height:var(--touch)}
+  .feed{display:flex;flex-direction:column;gap:var(--space-4)}
+  .card{position:relative;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5);transition:transform .2s,box-shadow .2s,border-color .2s}
+  .card.card-enter{animation:cardRise .45s both}
+  @keyframes cardRise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(hover:hover){.card:hover{transform:translateY(-2px);box-shadow:0 12px 28px -16px var(--shadow)}}
+  .card--hot{border-left-width:6px;border-left-color:var(--vermilion);background:var(--card-hot-bg)}
+  .card-badge{position:absolute;top:var(--space-3);right:var(--space-4);font-size:var(--text-xs);font-weight:700;letter-spacing:.5px;color:var(--card-badge-color);background:var(--card-badge-bg);padding:2px var(--space-2);border-radius:var(--radius-sm)}
+  .card-head{margin-bottom:var(--space-3);padding-right:72px}
+  .card h3{font-family:"Noto Serif SC",serif;font-weight:700;font-size:var(--text-lg);line-height:1.35;letter-spacing:.2px;color:var(--ink)}
+  .card h3.clickable{cursor:pointer}
+  @media(hover:hover){.card h3.clickable:hover{color:var(--vermilion)}}
+  .tags{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-2)}
+  .tag{font-size:var(--text-xs);font-weight:600;padding:2px var(--space-2);border-radius:var(--radius-sm);letter-spacing:.3px;white-space:nowrap;border:1px solid transparent}
+  .tag.lvlA{background:transparent;border-color:var(--tag-lvlA-border);color:var(--vermilion-deep)}
+  .tag.lvlList{background:transparent;border-color:var(--tag-lvlList-border);color:var(--pine)}
+  .tag.cat{background:transparent;border-color:var(--line);color:var(--ink-soft)}
+  .tag.school{background:transparent;border-color:var(--tag-school-border);color:var(--amber)}
+  .tag.verified{background:transparent;border-color:var(--tag-verified-border);color:var(--pine)}
+  .tag.unverified{background:transparent;border-color:var(--line);color:var(--ink-faint)}
+  .card-deadline{display:flex;align-items:center;flex-wrap:wrap;gap:var(--space-2);padding:var(--space-3) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:var(--space-3) 0}
+  .card-deadline .dl-date{font-family:"Fraunces",serif;font-weight:700;font-size:var(--text-md);color:var(--ink)}
+  .card-deadline .dl-label{font-size:var(--text-xs);color:var(--ink-faint);text-transform:uppercase;letter-spacing:.5px}
+  .card-meta{font-size:var(--text-sm);color:var(--ink-faint);line-height:1.5}
+  .card-meta+.card-meta{margin-top:var(--space-1)}
+  .urg{font-size:var(--text-xs);font-weight:700;padding:3px var(--space-2);border-radius:999px}
+  .urg.hot{background:var(--vermilion);color:var(--on-accent)}
+  .urg.warn{background:var(--urg-warn-bg);color:var(--urg-warn-color)}
+  .urg.calm{background:var(--paper-2);color:var(--ink-faint)}
+  .card .row2{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);flex-wrap:wrap}
+  .actions{display:flex;gap:var(--space-2);flex-wrap:wrap;width:100%}
+  @media(min-width:481px){.actions{width:auto}}
+  .btn{font-family:inherit;font-size:var(--text-sm);font-weight:600;border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);cursor:pointer;border:1.5px solid var(--ink);background:transparent;color:var(--ink);transition:background .18s,color .18s,border-color .18s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);min-height:var(--touch);white-space:nowrap}
+  @media(hover:hover){.btn:hover{background:var(--ink);color:var(--paper)}}
+  .btn:focus-visible{outline:2px solid var(--vermilion);outline-offset:2px}
+  .btn.primary{background:var(--vermilion);border-color:var(--vermilion);color:var(--on-accent)}
+  @media(hover:hover){.btn.primary:hover{background:var(--vermilion-deep);border-color:var(--vermilion-deep);color:var(--on-accent)}}
+  .btn.added{background:var(--pine);border-color:var(--pine);color:var(--on-accent);pointer-events:none}
+  .btn.added::before{content:"✓";display:inline-block;animation:tickPop .35s ease}
+  @keyframes tickPop{0%{transform:scale(0);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+  .btn.ghost{border-color:var(--line);color:var(--ink-soft);font-weight:500}
+  @media(hover:hover){.btn.ghost:hover{background:var(--paper-2);color:var(--ink);border-color:var(--line)}}
+  .focus-block{background:var(--card);border:1.5px solid var(--vermilion);border-radius:var(--radius-lg);padding:var(--space-4);margin:var(--space-4) 0 var(--space-2)}
+  .focus-block h3{font-family:"Noto Serif SC",serif;font-size:var(--text-md);margin-bottom:var(--space-3);color:var(--vermilion-deep);font-weight:700}
+  .focus-list{display:flex;flex-direction:column;gap:var(--space-2)}
+  .focus-item{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);font-size:var(--text-sm);padding:var(--space-3);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);cursor:pointer;min-height:var(--touch)}
+  @media(hover:hover){.focus-item:hover{border-color:var(--vermilion)}}
+  .focus-item .n{font-weight:600;flex:1;line-height:1.35;min-width:0}
+  .focus-item .d{font-family:"Fraunces",serif;font-size:var(--text-xs);color:var(--vermilion);white-space:nowrap;flex-shrink:0}
+  .empty-state{text-align:center;padding:var(--space-6) var(--space-4);border:1.5px dashed var(--line);border-radius:var(--radius-lg);background:var(--card)}
+  .empty-state p{font-size:var(--text-base);color:var(--ink-soft);margin-bottom:var(--space-2)}
+  .empty-state .sub{font-size:var(--text-sm);color:var(--ink-faint);margin-bottom:var(--space-4)}
+  .loading-row{font-size:var(--text-sm);color:var(--ink-faint);display:flex;align-items:center;gap:var(--space-2)}
+  .loading-dot{width:6px;height:6px;border-radius:50%;background:var(--pine);animation:dotPulse 1.2s ease infinite}
+  @keyframes dotPulse{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
+  .skeleton{padding:var(--space-3) 0}
+  .skeleton-line{height:10px;background:var(--paper-2);border-radius:var(--radius-sm);margin-bottom:var(--space-2);animation:skPulse 1.4s ease infinite}
+  .skeleton-line.w60{width:60%}.skeleton-line.w80{width:80%}.skeleton-line.w40{width:40%}
+  @keyframes skPulse{0%,100%{opacity:.5}50%{opacity:1}}
+  .rail{display:flex;flex-direction:column;gap:var(--space-4)}
+  @media(min-width:921px){.rail{position:sticky;top:72px}}
+  .rail-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden}
+  .rail-panel summary{list-style:none;cursor:pointer;padding:var(--space-4) var(--space-5);font-family:"Noto Serif SC",serif;font-size:var(--text-md);font-weight:600;display:flex;align-items:center;justify-content:space-between;min-height:var(--touch);user-select:none}
+  .rail-panel summary::-webkit-details-marker{display:none}
+  .rail-panel summary::after{content:"+";font-family:"Fraunces",serif;font-size:var(--text-lg);color:var(--ink-faint);transition:transform .2s}
+  .rail-panel[open] summary::after{content:"−"}
+  @media(min-width:921px){.rail-panel summary{display:none}.rail-panel{border-radius:var(--radius-lg)}}
+  .panel-body{padding:0 var(--space-5) var(--space-5)}
+  @media(min-width:921px){.panel-body{padding:var(--space-5)}}
+  .rail-panel:not([open]) .panel-body{display:none}
+  @media(min-width:921px){.rail-panel .panel-body{display:block!important}}
+  .panel.dark{background:var(--panel-dark-bg);color:var(--panel-dark-fg);border-color:var(--panel-dark-bg)}
+  .panel.dark summary{color:var(--panel-dark-fg)}
+  .panel .desc{font-size:var(--text-sm);color:var(--ink-faint);margin-bottom:var(--space-4)}
+  .panel.dark .desc{color:var(--panel-dark-muted)}
+  .panel.dark .loading-row{color:var(--panel-dark-text-muted)}
+  .panel.dark .loading-dot{background:var(--vermilion)}
+  .panel.dark .skeleton-line{background:var(--panel-dark-subtle)}
+  .ob-cta{width:100%;font-family:inherit;font-size:var(--text-base);font-weight:600;background:var(--vermilion);color:var(--on-accent);border:none;border-radius:var(--radius-md);padding:var(--space-4);cursor:pointer;transition:background .18s;min-height:var(--touch)}
+  @media(hover:hover){.ob-cta:hover{background:var(--vermilion-deep)}}
+  .ob-note{font-size:var(--text-xs);color:var(--ink-faint);margin-top:var(--space-3);text-align:center;line-height:1.5}
+  .roadmap-ms{padding:var(--space-3) 0;border-bottom:1px dashed var(--line);font-size:var(--text-sm)}
+  .roadmap-ms:last-child{border-bottom:none}
+  .roadmap-ms .rw{font-weight:600;color:var(--ink)}
+  .roadmap-ms .when{font-family:"Fraunces",serif;font-size:var(--text-xs);color:var(--ink-faint);margin-top:2px}
+  .plan-empty{text-align:center;padding:var(--space-5) var(--space-4);border:1.5px dashed var(--line);border-radius:var(--radius-md)}
+  .plan-empty p{font-size:var(--text-base);color:var(--ink-soft);margin-bottom:var(--space-2)}
+  .plan-empty .sub{font-size:var(--text-sm);color:var(--ink-faint);margin-bottom:var(--space-4)}
+  .plan-item{display:flex;gap:var(--space-3);padding:var(--space-3) 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .plan-item:last-child{border-bottom:none}
+  .node{width:10px;height:10px;border-radius:50%;background:var(--vermilion);margin-top:6px;flex-shrink:0}
+  .plan-body{flex:1;min-width:0}
+  .plan-body .t{font-size:var(--text-base);font-weight:500;line-height:1.4;word-break:break-word}
+  .plan-body .d{font-family:"Fraunces",serif;font-size:var(--text-xs);color:var(--ink-faint);margin-top:2px}
+  .plan-rm{background:none;border:none;color:var(--ink-faint);cursor:pointer;font-size:var(--text-lg);line-height:1;padding:var(--space-2);min-width:var(--touch);min-height:var(--touch);display:flex;align-items:center;justify-content:center}
+  .plan-rm:hover,.plan-rm:focus-visible{color:var(--vermilion)}
+  .custom-add{display:flex;gap:var(--space-2);margin-top:var(--space-4);flex-wrap:wrap}
+  .custom-add input{font-family:inherit;font-size:var(--text-sm);border:1.5px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3);background:var(--paper);min-height:var(--touch);color:var(--ink)}
+  .custom-add input[type=date]{width:100%;max-width:160px}
+  .custom-add input[type=text]{flex:1;min-width:120px}
+  .custom-add button{font-family:inherit;font-size:var(--text-sm);background:var(--ink);color:var(--paper);border:none;border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);cursor:pointer;min-height:var(--touch)}
+  .goal-input{display:flex;gap:var(--space-2);margin-bottom:var(--space-3)}
+  .goal-input input{flex:1;font-family:inherit;font-size:var(--text-base);background:var(--panel-dark-input-bg);border:1.5px solid var(--panel-dark-input-border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-4);color:var(--panel-dark-fg);min-height:var(--touch)}
+  .goal-input input::placeholder{color:var(--panel-dark-text-muted)}
+  .goal-input input:focus{outline:2px solid var(--vermilion);outline-offset:1px}
+  .goal-go{background:var(--vermilion);border:none;border-radius:var(--radius-md);color:var(--on-accent);font-weight:700;padding:0 var(--space-5);cursor:pointer;font-family:inherit;min-height:var(--touch);min-width:var(--touch);font-size:var(--text-base)}
+  .ms{display:flex;gap:var(--space-3);padding:var(--space-3) 0;align-items:flex-start;border-bottom:1px solid var(--panel-dark-subtle);animation:cardRise .4s both}
+  .ms:last-child{border-bottom:none}
+  .ms .num{font-family:"Fraunces",serif;font-weight:900;font-size:var(--text-sm);color:var(--vermilion);width:22px;flex-shrink:0}
+  .ms .mtext{font-size:var(--text-sm);color:var(--panel-dark-text);line-height:1.45}
+  .ms .mtext .when{display:block;font-size:var(--text-xs);color:var(--panel-dark-text-muted);margin-top:2px;font-family:"Fraunces",serif}
+  .ms .mtext .tip{display:block;font-size:var(--text-xs);color:var(--panel-dark-muted);margin-top:3px}
+  .ai-note{font-size:var(--text-xs);color:var(--panel-dark-text-muted);margin-top:var(--space-3)}
+  .intra{margin-top:var(--space-4);border-top:1px dashed var(--line);padding-top:var(--space-4);display:none}
+  .intra.open{display:block;animation:cardRise .35s both}
+  .intra .hd{font-size:var(--text-sm);font-weight:700;color:var(--pine);margin-bottom:var(--space-2)}
+  .intra .kv{font-size:var(--text-sm);margin:var(--space-1) 0;color:var(--ink-soft)}
+  .intra .kv b{color:var(--ink);font-weight:600}
+  .intra ul{margin:var(--space-2) 0 0 var(--space-5);font-size:var(--text-sm);color:var(--ink-soft)}
+  .intra .caveat{font-size:var(--text-xs);color:var(--ink-faint);margin-top:var(--space-2);font-style:italic}
+  .overlay{position:fixed;inset:0;background:var(--overlay-bg);z-index:80;display:none;align-items:center;justify-content:center;padding:var(--space-4)}
+  .overlay.open{display:flex}
+  .modal{background:var(--card);border-radius:var(--radius-lg);max-width:480px;width:100%;max-height:90vh;overflow:auto;padding:var(--space-5);border:1px solid var(--line);box-shadow:0 24px 60px -20px rgba(0,0,0,.2)}
+  .modal h3{font-family:"Noto Serif SC",serif;font-size:var(--text-lg);margin-bottom:var(--space-2)}
+  .modal .hint{font-size:var(--text-sm);color:var(--ink-faint);margin-bottom:var(--space-4)}
+  .field{margin-bottom:var(--space-4)}
+  .field label{display:block;font-size:var(--text-sm);font-weight:600;color:var(--ink-soft);margin-bottom:var(--space-2)}
+  .field input[type=text],.field textarea,.field select{width:100%;font-family:inherit;font-size:var(--text-base);border:1.5px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3);background:var(--paper);min-height:var(--touch);color:var(--ink)}
+  .field textarea{min-height:72px;resize:vertical}
+  .chips{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+  .chip{font-size:var(--text-sm);padding:var(--space-2) var(--space-3);border-radius:999px;border:1px solid var(--line);background:var(--paper);cursor:pointer;user-select:none;min-height:36px;display:inline-flex;align-items:center}
+  .chip.on{background:var(--vermilion);border-color:var(--vermilion);color:var(--on-accent)}
+  .modal-actions{display:flex;gap:var(--space-3);margin-top:var(--space-4)}
+  .modal-actions button{flex:1;font-family:inherit;font-size:var(--text-base);font-weight:600;padding:var(--space-4);border-radius:var(--radius-md);cursor:pointer;border:none;min-height:var(--touch)}
+  .modal-actions .primary{background:var(--vermilion);color:var(--on-accent)}
+  .modal-actions .ghost{background:var(--paper-2);color:var(--ink-soft)}
+  .drawer-wrap{position:fixed;inset:0;z-index:90;pointer-events:none}
+  .drawer-wrap.open{pointer-events:auto}
+  .drawer-back{position:absolute;inset:0;background:var(--drawer-back);opacity:0;transition:opacity .25s}
+  .drawer-wrap.open .drawer-back{opacity:1}
+  .drawer{position:absolute;top:0;right:0;height:100%;width:min(420px,100vw);background:var(--card);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .3s;overflow:auto;padding:var(--space-5);box-shadow:-8px 0 32px rgba(0,0,0,.08)}
+  .drawer-wrap.open .drawer{transform:none}
+  .drawer .close-x{position:absolute;top:var(--space-3);right:var(--space-4);background:none;border:none;font-size:var(--text-xl);cursor:pointer;color:var(--ink-faint);width:var(--touch);height:var(--touch);display:flex;align-items:center;justify-content:center}
+  .drawer h3{font-family:"Noto Serif SC",serif;font-size:var(--text-lg);line-height:1.35;padding-right:36px;font-weight:700}
+  .drawer .meta{font-size:var(--text-sm);color:var(--ink-soft);margin:var(--space-3) 0;line-height:1.6}
+  .drawer .drawer-actions{display:flex;gap:var(--space-2);flex-wrap:wrap;margin:var(--space-4) 0}
+  footer{border-top:1.5px solid var(--ink);padding:var(--space-5) 0 var(--space-6);font-size:var(--text-sm);color:var(--ink-faint)}
+  footer .frow{display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap}
+  footer b{color:var(--ink-soft)}
+  .toast{position:fixed;bottom:var(--space-5);left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:var(--paper);padding:var(--space-4) var(--space-5);border-radius:var(--radius-md);font-size:var(--text-base);font-weight:500;opacity:0;transition:opacity .3s,transform .3s;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.15);max-width:calc(100vw - 32px);text-align:center}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .auth-area{display:flex;align-items:center;gap:var(--space-2);flex-shrink:0}
+  .auth-btn{font-family:inherit;font-size:var(--text-sm);font-weight:600;padding:var(--space-2) var(--space-3);border-radius:var(--radius-md);cursor:pointer;border:1.5px solid var(--line);background:var(--card);color:var(--ink);min-height:36px}
+  .auth-btn.primary{background:var(--vermilion);border-color:var(--vermilion);color:var(--on-accent)}
+  .user-menu{position:relative}
+  .user-menu-btn{display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);font-weight:600;padding:var(--space-2) var(--space-3);border:1.5px solid var(--line);border-radius:var(--radius-md);background:var(--card);cursor:pointer;min-height:36px}
+  .user-menu-btn .badge{font-size:var(--text-xs);background:var(--pine);color:var(--on-accent);padding:1px 6px;border-radius:999px}
+  .user-dropdown{position:absolute;right:0;top:calc(100% + 4px);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);box-shadow:0 8px 24px var(--shadow);min-width:140px;display:none;z-index:50}
+  .user-dropdown.open{display:block}
+  .user-dropdown button{width:100%;text-align:left;padding:var(--space-3) var(--space-4);border:none;background:none;font-family:inherit;font-size:var(--text-sm);cursor:pointer;color:var(--ink)}
+  .user-dropdown button:hover{background:var(--paper-2)}
+  .nav a.active{color:var(--ink);font-weight:700}
+  .nav a.active::after{width:100%}
+  .page-view{display:none;padding:var(--space-5) 0 var(--space-6)}
+  .page-view.active{display:block}
+  .chat-wrap{display:flex;flex-direction:column;height:min(70vh,620px);border:1px solid var(--line);border-radius:var(--radius-lg);background:var(--card);overflow:hidden}
+  .chat-msgs{flex:1;overflow:auto;padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)}
+  .chat-msg{max-width:88%;padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);font-size:var(--text-base);line-height:1.55;white-space:pre-wrap;word-break:break-word}
+  .chat-msg.user{align-self:flex-end;background:var(--ink);color:var(--paper);border-bottom-right-radius:2px}
+  .chat-msg.assistant{align-self:flex-start;background:var(--paper-2);border:1px solid var(--line);border-bottom-left-radius:2px}
+  .chat-input{display:flex;gap:var(--space-2);padding:var(--space-3);border-top:1px solid var(--line);background:var(--paper)}
+  .chat-input textarea{flex:1;font-family:inherit;font-size:var(--text-base);border:1.5px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3);resize:none;min-height:44px;max-height:120px;background:var(--input-bg)}
+  .chat-input button{font-family:inherit;font-weight:600;background:var(--vermilion);color:var(--on-accent);border:none;border-radius:var(--radius-md);padding:0 var(--space-4);cursor:pointer;min-height:44px}
+  .pomo-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-5);text-align:center;margin-bottom:var(--space-4)}
+  .pomo-time{font-family:"Fraunces",serif;font-size:48px;font-weight:900;color:var(--ink);letter-spacing:2px}
+  .pomo-mode{font-size:var(--text-sm);color:var(--ink-faint);margin:var(--space-2) 0 var(--space-4)}
+  .pomo-actions{display:flex;gap:var(--space-2);justify-content:center;flex-wrap:wrap}
+  .task-group{margin-bottom:var(--space-4)}
+  .task-group h4{font-family:"Noto Serif SC",serif;font-size:var(--text-md);margin-bottom:var(--space-2);color:var(--ink-soft)}
+  .task-row{display:flex;align-items:center;gap:var(--space-3);padding:var(--space-3);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);margin-bottom:var(--space-2);flex-wrap:wrap}
+  .task-row .t{flex:1;min-width:120px;font-weight:500}
+  .task-row .meta{font-size:var(--text-xs);color:var(--ink-faint)}
+  .task-row select,.task-row button{font-family:inherit;font-size:var(--text-sm)}
+  .stats-row{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-bottom:var(--space-4)}
+  .stat-pill{flex:1;min-width:100px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-3);text-align:center}
+  .stat-pill .n{font-family:"Fraunces",serif;font-size:var(--text-xl);font-weight:900;color:var(--vermilion)}
+  .stat-pill .l{font-size:var(--text-xs);color:var(--ink-faint)}
+  .wall-filters{display:flex;gap:var(--space-2);flex-wrap:wrap;margin:var(--space-4) 0}
+  .wall-filters button{font-family:inherit;font-size:var(--text-sm);padding:var(--space-2) var(--space-3);border-radius:999px;border:1px solid var(--line);background:var(--paper-2);cursor:pointer}
+  .wall-filters button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .wall-card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pine);border-radius:var(--radius-lg);padding:var(--space-4);margin-bottom:var(--space-3)}
+  .wall-card .wh{display:flex;justify-content:space-between;gap:var(--space-2);margin-bottom:var(--space-2);flex-wrap:wrap}
+  .wall-card .type-tag{font-size:var(--text-xs);font-weight:700;color:var(--pine);letter-spacing:.5px}
+  .wall-card .mentor-tag{font-size:var(--text-xs);background:var(--amber);color:var(--on-accent);padding:2px 8px;border-radius:999px}
+  .wall-card h4{font-family:"Noto Serif SC",serif;font-size:var(--text-md);margin-bottom:var(--space-2)}
+  .wall-card .body{font-size:var(--text-sm);color:var(--ink-soft);white-space:pre-wrap;word-break:break-word;line-height:1.55}
+  .wall-card .foot{font-size:var(--text-xs);color:var(--ink-faint);margin-top:var(--space-3);display:flex;justify-content:space-between;align-items:center;gap:var(--space-2)}
+  .wall-form{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-4);margin-bottom:var(--space-4)}
+  .wall-form .field{margin-bottom:var(--space-3)}
+  .qq-banner{background:var(--paper-2);border:1px dashed var(--line);border-radius:var(--radius-md);padding:var(--space-3);font-size:var(--text-sm);color:var(--ink-soft);margin-bottom:var(--space-4)}
+  .tabs-auth{display:flex;gap:var(--space-2);margin-bottom:var(--space-4)}
+  .tabs-auth button{flex:1;font-family:inherit;padding:var(--space-3);border:1px solid var(--line);background:var(--paper-2);cursor:pointer;border-radius:var(--radius-md)}
+  .tabs-auth button.on{background:var(--ink);color:var(--paper)}
+  .chat-msg.assistant .chat-qlist{margin:var(--space-2) 0 0;padding-left:var(--space-4);list-style:decimal}
+  .chat-msg.assistant .chat-qlist li{margin:var(--space-1) 0;font-weight:500}
+  .chat-quick{display:flex;flex-wrap:wrap;gap:var(--space-2);padding:0 var(--space-3) var(--space-3)}
+  .chat-quick button{font-family:inherit;font-size:var(--text-xs);padding:var(--space-2) var(--space-3);border-radius:999px;border:1px dashed var(--line);background:var(--paper);cursor:pointer;color:var(--ink-soft)}
+  .wall-toolbar{display:flex;gap:var(--space-2);flex-wrap:wrap;margin:var(--space-3) 0;align-items:center}
+  .wall-toolbar input,.wall-toolbar select{font-family:inherit;font-size:var(--text-sm);padding:var(--space-2) var(--space-3);border:1.5px solid var(--line);border-radius:var(--radius-md);min-height:40px;background:var(--card)}
+  .wall-toolbar input{flex:1;min-width:140px}
+  .wall-bump{font-family:inherit;font-size:var(--text-sm);padding:var(--space-2) var(--space-3);border-radius:var(--radius-md);border:1px solid var(--line);background:var(--paper-2);cursor:pointer}
+  .wall-bump.on{background:var(--pine);color:var(--on-accent);border-color:var(--pine)}
+  .linkish{background:none;border:none;padding:0;font-family:inherit;font-size:inherit;color:var(--vermilion);cursor:pointer;text-decoration:underline}
+  .wb-tabs{display:flex;gap:var(--space-2);margin-bottom:var(--space-4);flex-wrap:wrap}
+  .wb-tabs button{font-family:inherit;font-size:var(--text-sm);font-weight:600;padding:var(--space-3) var(--space-4);border-radius:999px;border:1.5px solid var(--line);background:var(--paper-2);cursor:pointer;min-height:40px}
+  .wb-tabs button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .wb-panel{display:none}.wb-panel.on{display:block}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3);gap:var(--space-2)}
+  .cal-head h3{font-family:"Noto Serif SC",serif;font-size:var(--text-md)}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;font-size:var(--text-xs)}
+  .cal-dow{text-align:center;color:var(--ink-faint);padding:var(--space-2) 0;font-weight:600}
+  .cal-cell{min-height:52px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:2px;cursor:pointer;background:var(--card);position:relative}
+  .cal-cell.other{opacity:.45}.cal-cell.today{border-color:var(--vermilion);box-shadow:inset 0 0 0 1px var(--vermilion)}
+  .cal-cell.selected{background:var(--paper-2);border-color:var(--ink)}
+  .cal-cell .dn{font-family:"Fraunces",serif;font-weight:700;font-size:11px;padding:1px 3px}
+  .cal-dots{display:flex;flex-wrap:wrap;gap:2px;margin-top:2px}
+  .cal-dot{width:6px;height:6px;border-radius:50%}
+  .cal-dot.comp{background:var(--vermilion)}.cal-dot.task{background:var(--pine)}.cal-dot.pom{background:var(--amber)}
+  .cal-urgent{position:absolute;top:2px;right:2px;width:6px;height:6px;border-radius:50%;background:var(--vermilion)}
+  .day-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--space-3);flex-wrap:wrap;gap:var(--space-2)}
+  .mode-toggle{display:flex;gap:var(--space-1);background:var(--paper-2);border-radius:999px;padding:2px;border:1px solid var(--line)}
+  .mode-toggle button{font-family:inherit;font-size:var(--text-xs);padding:var(--space-2) var(--space-3);border:none;background:transparent;border-radius:999px;cursor:pointer;min-height:32px}
+  .mode-toggle button.on{background:var(--card);font-weight:700;box-shadow:0 1px 3px var(--shadow)}
+  .check-item{display:flex;align-items:center;gap:var(--space-2);padding:var(--space-3);background:var(--card);border:1px solid var(--line);border-radius:var(--radius-md);margin-bottom:var(--space-2);touch-action:manipulation}
+  .check-item.done{opacity:.65}.check-item.done .check-t{text-decoration:line-through}
+  .check-item .star{cursor:pointer;color:var(--ink-faint);font-size:var(--text-md);padding:var(--space-1);border:none;background:none}
+  .check-item .star.on{color:var(--amber)}
+  .check-item input[type=checkbox]{width:20px;height:20px;accent-color:var(--vermilion);flex-shrink:0}
+  .check-t{flex:1;font-size:var(--text-base);min-width:0;word-break:break-word}
+  .check-meta{font-size:var(--text-xs);color:var(--ink-faint)}
+  .tl-grid{display:grid;grid-template-columns:48px 1fr;gap:0;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--card)}
+  .tl-hour{padding:var(--space-2);font-size:var(--text-xs);color:var(--ink-faint);border-bottom:1px solid var(--line);min-height:44px;display:flex;align-items:flex-start}
+  .tl-slot{padding:var(--space-1);border-bottom:1px solid var(--line);min-height:44px;position:relative}
+  .tl-block{background:var(--paper-2);border-left:3px solid var(--pine);border-radius:var(--radius-sm);padding:var(--space-2);font-size:var(--text-xs);margin:2px 0;cursor:pointer}
+  .tl-block.done{opacity:.6;text-decoration:line-through}
+  .add-day-task{display:flex;gap:var(--space-2);margin:var(--space-3) 0;flex-wrap:wrap}
+  .add-day-task input{font-family:inherit;font-size:var(--text-sm);padding:var(--space-2) var(--space-3);border:1.5px solid var(--line);border-radius:var(--radius-md);flex:1;min-width:120px;min-height:40px}
+  @media(max-width:720px){.cal-cell{min-height:44px}.cal-grid{font-size:10px}}
+  @media(max-width:720px){.auth-area .auth-btn.login-text{display:none}.user-menu-btn{font-size:var(--text-xs)}}
+  @media(max-width:480px){
+    .hero .meta .pill:nth-child(n+3){display:none}
+    .card-head{padding-right:0}
+    .card-badge{position:static;display:inline-block;margin-bottom:var(--space-2)}
+    footer .frow>div:last-child{text-align:left}
+    .theme-swatch .swatch-label{display:none}
+    .pref-toolbar{gap:var(--space-1)}
+  }
+  /* --- 主题切换与个性化 --- */
+  .pref-toolbar{display:flex;align-items:center;gap:var(--space-2);flex-shrink:0}
+  .theme-picker{display:flex;gap:4px;flex-wrap:nowrap}
+  .theme-swatch{display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px;border:1.5px solid transparent;border-radius:var(--radius-md);background:none;cursor:pointer;font-family:inherit;min-width:36px}
+  .theme-swatch.on{border-color:var(--vermilion);background:var(--paper-2)}
+  .theme-swatch .swatch-colors{display:flex;gap:2px}
+  .theme-swatch .swatch-colors i{display:block;width:10px;height:10px;border-radius:2px;border:1px solid var(--line)}
+  .theme-swatch .swatch-label{font-size:9px;color:var(--ink-faint);line-height:1}
+  .pref-btn{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1.5px solid var(--line);border-radius:var(--radius-md);background:var(--card);color:var(--ink-soft);cursor:pointer;font-size:var(--text-md);flex-shrink:0}
+  @media(hover:hover){.pref-btn:hover{border-color:var(--ink);color:var(--ink)}}
+  .topbar{flex-wrap:wrap}
+  @media(max-width:720px){.topbar{align-items:flex-start}.pref-toolbar{order:3;width:100%;justify-content:flex-end;margin-top:var(--space-1)}}
+  .slogan-bar{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-4);padding:var(--space-3) var(--space-4);background:var(--paper-2);border:1px dashed var(--line);border-radius:var(--radius-md);cursor:pointer}
+  .slogan-bar .slogan-text{flex:1;font-family:"Noto Serif SC",serif;font-size:var(--text-md);font-weight:600;color:var(--slogan-accent);line-height:1.45;min-width:0;word-break:break-word}
+  .slogan-bar .slogan-text.is-placeholder{color:var(--ink-faint);font-weight:500;font-style:italic}
+  .slogan-edit{background:none;border:none;color:var(--ink-faint);cursor:pointer;font-size:var(--text-md);padding:var(--space-2);min-width:var(--touch);min-height:var(--touch);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  @media(hover:hover){.slogan-edit:hover{color:var(--vermilion)}}
+  .pref-section{margin-bottom:var(--space-4)}
+  .pref-section h4{font-size:var(--text-sm);font-weight:700;color:var(--ink-soft);margin-bottom:var(--space-2)}
+  .font-picks{display:flex;gap:var(--space-2)}
+  .font-picks button{flex:1;font-family:inherit;font-size:var(--text-sm);padding:var(--space-3);border:1.5px solid var(--line);border-radius:var(--radius-md);background:var(--paper-2);cursor:pointer;min-height:40px}
+  .font-picks button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .pref-toggle{display:flex;align-items:center;gap:var(--space-3);font-size:var(--text-sm);color:var(--ink-soft);cursor:pointer}
+  .pref-toggle input{width:18px;height:18px;accent-color:var(--vermilion)}
+  .settings-theme-picker{display:flex;gap:var(--space-2);flex-wrap:wrap}
+  .settings-theme-picker .theme-swatch{min-width:72px;padding:var(--space-2)}
+  .settings-theme-picker .theme-swatch .swatch-colors i{width:14px;height:14px}
+  /* --- 首页总览 Dashboard --- */
+  .dash-header{margin-bottom:var(--space-5);padding:var(--space-5) 0 var(--space-4);border-bottom:1px solid var(--line)}
+  .dash-greeting{font-family:"Noto Serif SC",serif;font-weight:900;font-size:clamp(20px,5vw,28px);line-height:1.2;margin:var(--space-3) 0 var(--space-2);color:var(--ink)}
+  .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-bottom:var(--space-5)}
+  @media(max-width:720px){.dash-grid{grid-template-columns:1fr}}
+  .dash-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--space-4);min-width:0}
+  .dash-card--focus{border-left:4px solid var(--vermilion);grid-column:1/-1}
+  .dash-card h3{font-family:"Noto Serif SC",serif;font-size:var(--text-md);font-weight:700;margin-bottom:var(--space-3);display:flex;align-items:center;gap:var(--space-2)}
+  .dash-card h3 .tag{font-size:var(--text-xs);font-weight:600;color:var(--vermilion);background:var(--card-hot-bg);padding:2px 8px;border-radius:999px}
+  .dash-focus-group{margin-bottom:var(--space-3)}
+  .dash-focus-group:last-child{margin-bottom:0}
+  .dash-focus-group h4{font-size:var(--text-xs);font-weight:700;color:var(--ink-faint);letter-spacing:.5px;text-transform:uppercase;margin-bottom:var(--space-2)}
+  .dash-focus-list{display:flex;flex-direction:column;gap:var(--space-2)}
+  .dash-focus-item{display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);width:100%;text-align:left;padding:var(--space-3) var(--space-4);background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-md);cursor:pointer;font-family:inherit;min-height:var(--touch);transition:border-color .18s,background .18s}
+  @media(hover:hover){.dash-focus-item:hover{border-color:var(--vermilion);background:var(--paper-2)}}
+  .dash-focus-item.hot{border-color:var(--vermilion);background:var(--card-hot-bg)}
+  .dash-focus-item .fi-title{font-size:var(--text-base);font-weight:600;color:var(--ink);flex:1;min-width:0;line-height:1.35}
+  .dash-focus-item .fi-meta{font-size:var(--text-xs);color:var(--ink-faint);white-space:nowrap;flex-shrink:0}
+  .dash-stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);margin-bottom:var(--space-3)}
+  @media(min-width:481px){.dash-stat-grid{grid-template-columns:repeat(4,1fr)}}
+  .dash-stat{text-align:center;padding:var(--space-3);background:var(--paper);border-radius:var(--radius-md);border:1px solid var(--line)}
+  .dash-stat .n{display:block;font-family:"Fraunces",serif;font-size:var(--text-xl);font-weight:900;color:var(--vermilion)}
+  .dash-stat .l{font-size:var(--text-xs);color:var(--ink-faint)}
+  .dash-progress-bar{height:6px;background:var(--paper-2);border-radius:999px;overflow:hidden}
+  .dash-progress-bar i{display:block;height:100%;background:var(--pine);border-radius:999px;transition:width .4s ease}
+  .dash-next-card{padding:var(--space-4);background:var(--paper-2);border:1px dashed var(--line);border-radius:var(--radius-md)}
+  .dash-next-tag{font-size:var(--text-xs);font-weight:700;color:var(--vermilion);letter-spacing:.5px}
+  .dash-next-card h3{font-family:"Noto Serif SC",serif;font-size:var(--text-md);margin:var(--space-2) 0}
+  .dash-next-card p{font-size:var(--text-sm);color:var(--ink-soft);margin-bottom:var(--space-4);line-height:1.5}
+  .dash-empty{text-align:center;padding:var(--space-5) var(--space-3)}
+  .dash-empty p{font-size:var(--text-base);color:var(--ink-soft);margin-bottom:var(--space-2)}
+  .dash-empty .sub{font-size:var(--text-sm);color:var(--ink-faint);margin-bottom:var(--space-4)}
+  .dash-welcome{margin-bottom:var(--space-4);background:var(--card);border:1.5px solid var(--vermilion);border-radius:var(--radius-lg);padding:var(--space-4)}
+  .dash-welcome-inner{display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:center;justify-content:space-between}
+  .dash-welcome p{font-size:var(--text-sm);color:var(--ink-soft);margin-top:var(--space-2);max-width:48ch;line-height:1.5}
+  .dash-welcome-actions{display:flex;gap:var(--space-2);flex-wrap:wrap}
+  .dash-quick{display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-4)}
+  .dash-quick .btn{font-size:var(--text-xs);padding:var(--space-2) var(--space-3);min-height:36px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap topbar">
+    <div class="brand"><span class="logo">Compass<span class="dot">.</span></span><span class="cn">新生指北</span></div>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="打开导航菜单" aria-expanded="false" onclick="toggleNav()"><span></span></button>
+    <nav class="nav" id="mainNav" aria-label="主导航">
+      <a href="#home" data-route="home" onclick="closeNav()">今日</a>
+      <a href="#feed" data-route="feed" onclick="closeNav()">竞赛</a>
+      <a href="#tasks" data-route="tasks" onclick="closeNav()">规划与任务</a>
+      <a href="#advisor" data-route="advisor" onclick="closeNav()">顾问</a>
+      <a href="#wall" data-route="wall" onclick="closeNav()">社区</a>
+    </nav>
+    <div class="pref-toolbar">
+      <div class="theme-picker" id="headerThemePicker" aria-label="主题切换"></div>
+      <button type="button" class="pref-btn" id="prefSettingsBtn" aria-label="个性化设置" title="个性化设置">⚙</button>
+    </div>
+    <div class="auth-area" id="authArea">
+      <button type="button" class="auth-btn" onclick="CompassUI.openAuth('login')">登录</button>
+      <button type="button" class="auth-btn primary" onclick="CompassUI.openAuth('register')">注册</button>
+    </div>
+  </div>
+</header>
+
+<nav class="wrap page-crumb" id="pageCrumb" aria-label="当前位置"></nav>
+
+<section class="hero" id="heroSection" style="display:none">
+  <div class="wrap">
+    <div class="figure">大一</div>
+    <div class="kicker">高考结束 — 大学第一年</div>
+    <h1>把"上大学"这件事，<br>拆成<em>看得见的下一步</em>。</h1>
+    <p class="lead">每周自动汇总教育部认可榜单里的高含金量竞赛，按你的专业和阶段，变成计划里一条条带时间的待办；还能问 AI 要不要先打校内赛。</p>
+    <div class="meta">
+      <span class="pill"><span class="live"></span><span id="updatedAt">本周已更新</span></span>
+      <span class="pill">数据源：高教学会榜单 + 多站聚合</span>
+      <span class="pill">截止时间人工复核</span>
+    </div>
+  </div>
+</section>
+
+<!-- 首页总览 Dashboard -->
+<div class="wrap page-view active" id="viewHome" data-view="home">
+  <div id="dashWelcome" style="display:none"></div>
+  <header class="dash-header">
+    <div class="slogan-bar" id="sloganBar">
+      <p class="slogan-text is-placeholder" id="sloganDisplay">点击编辑，写下你的大一宣言或座右铭 ✦</p>
+      <button type="button" class="slogan-edit" id="sloganEditBtn" aria-label="编辑个性签名">✎</button>
+    </div>
+    <p class="dash-greeting" id="dashGreeting">把上大学拆成看得见的下一步</p>
+    <div class="dash-quick">
+      <button type="button" class="btn ghost" onclick="location.hash='#feed'">竞赛雷达</button>
+      <button type="button" class="btn ghost" onclick="location.hash='#tasks'">今日待办</button>
+      <button type="button" class="btn ghost" onclick="location.hash='#advisor'">问顾问</button>
+    </div>
+  </header>
+  <div class="dash-grid">
+    <section class="dash-card dash-card--focus">
+      <h3>今日聚焦 <span class="tag">核心</span></h3>
+      <div id="dashFocus"><div class="dash-empty"><p>加载中…</p></div></div>
+    </section>
+    <section class="dash-card">
+      <h3>我的进展</h3>
+      <div id="dashProgress"></div>
+    </section>
+    <section class="dash-card">
+      <h3>智能引导</h3>
+      <div id="dashNext"></div>
+    </section>
+  </div>
+</div>
+
+<div class="wrap page-view" id="viewFeed" data-view="feed">
+  <div class="grid">
+    <main id="feed">
+      <div class="section-head"><h2>竞赛雷达</h2><span class="sub">按你的专业优先 · 临近截止置顶</span></div>
+      <div class="tabs-wrap"><div class="tabs" id="tabs" role="tablist" aria-label="赛事分类"></div></div>
+      <div class="toolbar">
+        <span class="count">共 <b id="cnt">0</b> 项可报</span>
+        <div class="toolbar-grow"><input type="search" class="search-inp" id="searchQ" placeholder="搜索赛事或主办方" aria-label="搜索赛事或主办方" autocomplete="off" /></div>
+        <select class="sortsel" id="sort" aria-label="排序方式">
+          <option value="deadline">按截止日期（最近）</option>
+          <option value="level">按含金量（A类优先）</option>
+        </select>
+      </div>
+      <div class="focus-block" id="focusBlock" style="display:none">
+        <h3>本周聚焦 · 未来 14 天内截止</h3>
+        <div class="focus-list" id="focusList"></div>
+      </div>
+      <div class="feed" id="feedlist"></div>
+    </main>
+
+    <aside class="rail" id="rail">
+      <details class="rail-panel panel" id="panelSurvey">
+        <summary>① 先认识你</summary>
+        <div class="panel-body">
+          <p class="desc">3 分钟问卷：目标院校 / 专业 / 兴趣，之后推荐都贴着你来。</p>
+          <button class="ob-cta" id="surveyBtn" type="button" onclick="openSurvey()">开始问卷 →</button>
+          <p class="ob-note" id="surveyStatus">填完后竞赛雷达会按你的专业大类优先排序</p>
+        </div>
+      </details>
+      <details class="rail-panel panel" id="roadmapPanel" style="display:none">
+        <summary>我的规划</summary>
+        <div class="panel-body">
+          <p class="desc">根据问卷生成的第一学年行动路线。</p>
+          <div id="roadmapOut"></div>
+          <div class="ai-note" id="roadmapNote" style="color:var(--ink-faint);margin-top:8px"></div>
+        </div>
+      </details>
+      <details class="rail-panel panel" open>
+        <summary>② 我的计划 <span id="planCount" style="font-family:Fraunces;color:var(--vermilion);font-weight:900"></span></summary>
+        <div class="panel-body">
+          <p class="desc">从竞赛雷达「加入计划」的目标会落在这里，并带上关键时间。</p>
+          <div id="planList"><div class="plan-empty"><p>计划还是空的</p><p class="sub">从竞赛雷达点「加入计划」，再在工作台拆成待办</p><button type="button" class="btn ghost" onclick="location.hash='#feed'">去看竞赛</button><button type="button" class="btn primary" style="margin-left:8px" onclick="location.hash='#tasks'">打开工作台</button></div></div>
+          <div class="custom-add">
+            <input type="text" id="customTitle" placeholder="自定义待办标题" aria-label="自定义待办标题" />
+            <input type="date" id="customDate" aria-label="待办日期" />
+            <button type="button" onclick="addCustomTodo()">+ 添加</button>
+          </div>
+        </div>
+      </details>
+      <details class="rail-panel panel dark">
+        <summary>③ 目标拆解</summary>
+        <div class="panel-body">
+          <p class="desc">说一个大目标，AI 帮你拆成带时间的可执行节点。</p>
+          <div class="goal-input">
+            <input id="goalInput" placeholder="例：大一拿一个国家级竞赛奖" aria-label="输入你的大目标" />
+            <button class="goal-go" id="goalGo" type="button" onclick="decompose()" aria-label="拆解目标">拆</button>
+          </div>
+          <div id="goalOut"></div>
+          <div class="ai-note" id="aiNote"></div>
+        </div>
+      </details>
+    </aside>
+  </div>
+</div>
+
+<!-- 规划顾问 -->
+<div class="wrap page-view" id="viewAdvisor" data-view="advisor">
+  <div class="section-head"><h2>规划顾问</h2><span class="sub">学业 · 竞赛 · 履历</span></div>
+  <p class="chat-privacy">🔒 你与顾问的对话会加密保存在服务器，仅你本人可见，用于延续上下文与改进服务。请勿输入密码、身份证号等敏感信息。</p>
+  <div id="advisorLoginHint" class="qq-banner" style="display:none">登录后可保存对话、采纳建议到待办。已有账号？<button type="button" class="btn primary" style="margin-left:8px;min-height:36px" onclick="CompassUI.openAuth('login')">登录</button></div>
+  <div class="chat-toolbar">
+    <button type="button" class="btn ghost" id="chatNewBtn" onclick="CompassUI.newChatSession()">＋ 新对话</button>
+    <button type="button" class="btn ghost" id="chatHistoryBtn" onclick="CompassUI.toggleChatHistory()">历史会话</button>
+  </div>
+  <div class="chat-history-panel" id="chatHistoryPanel" aria-label="历史会话列表"></div>
+  <p class="desc" style="font-size:var(--text-sm);color:var(--ink-faint);margin-bottom:var(--space-4)">先诊断、再开方。信息不全时会追问 1~3 个关键问题；建议可一键采纳为任务。回答下方会标注可验证来源或诚实声明。</p>
+  <div class="chat-wrap">
+    <div class="chat-msgs" id="chatMsgs"><div class="chat-msg assistant">你好，我是 Compass 规划顾问。可以说说你的年级、专业和目标，我们一起拆成可执行的下一步。</div></div>
+    <div class="chat-input">
+      <textarea id="chatInput" rows="2" placeholder="例：我是准大一计算机，想大一参加数学建模，该怎么准备？" aria-label="输入消息"></textarea>
+      <button type="button" id="chatSend" onclick="CompassUI.sendChat()">发送</button>
+    </div>
+  </div>
+</div>
+
+<!-- 番茄钟 + 日历工作台 -->
+<div class="wrap page-view" id="viewTasks" data-view="tasks">
+  <div class="section-head"><h2>时间 · 任务工作台</h2><span class="sub">日历 · 当日待办 · 番茄钟</span></div>
+  <div class="stats-row" id="taskStats">
+    <div class="stat-pill"><div class="n" id="statPomToday">0</div><div class="l">今日番茄</div></div>
+    <div class="stat-pill"><div class="n" id="statDoneToday">0</div><div class="l">今日完成</div></div>
+    <div class="stat-pill"><div class="n" id="statPomWeek">0</div><div class="l">本周番茄</div></div>
+  </div>
+  <div class="wb-tabs" id="wbTabs">
+    <button type="button" class="on" data-tab="day" onclick="Workbench.switchTab('day')">今日待办</button>
+    <button type="button" data-tab="calendar" onclick="Workbench.switchTab('calendar')">月历</button>
+    <button type="button" data-tab="pomo" onclick="Workbench.switchTab('pomo')">番茄钟</button>
+  </div>
+  <div class="wb-panel on" id="wbDay">
+    <div class="day-head">
+      <strong id="wbDayLabel"></strong>
+      <div class="mode-toggle">
+        <button type="button" class="on" id="modeCheck" onclick="Workbench.setMode('checklist')">清单</button>
+        <button type="button" id="modeTime" onclick="Workbench.setMode('timeline')">时间轴</button>
+      </div>
+    </div>
+    <div class="add-day-task">
+      <input type="text" id="newDayTask" placeholder="添加今日待办" maxlength="200" />
+      <input type="time" id="newDayStart" title="开始时间（时间轴）" />
+      <input type="time" id="newDayEnd" title="结束时间（时间轴）" />
+      <button type="button" class="btn primary" onclick="Workbench.addDayTask()">添加</button>
+    </div>
+    <div id="checklistView"></div>
+    <div id="timelineView" style="display:none"></div>
+  </div>
+  <div class="wb-panel" id="wbCalendar">
+    <div class="cal-head">
+      <button type="button" class="btn ghost" onclick="Workbench.shiftMonth(-1)">‹</button>
+      <h3 id="calMonthLabel"></h3>
+      <button type="button" class="btn ghost" onclick="Workbench.shiftMonth(1)">›</button>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <p style="font-size:var(--text-xs);color:var(--ink-faint);margin-top:var(--space-3)">
+      <span class="cal-dot comp" style="display:inline-block;vertical-align:middle"></span> 竞赛截止
+      <span class="cal-dot task" style="display:inline-block;vertical-align:middle;margin-left:8px"></span> 待办
+      <span class="cal-dot pom" style="display:inline-block;vertical-align:middle;margin-left:8px"></span> 番茄
+    </p>
+  </div>
+  <div class="wb-panel" id="wbPomo">
+    <div class="pomo-box">
+      <div class="pomo-mode" id="pomoMode">专注 25 分钟</div>
+      <div class="pomo-time" id="pomoTime">25:00</div>
+      <p style="font-size:var(--text-sm);color:var(--ink-faint);margin-bottom:var(--space-3)" id="pomoTaskLabel">未选择任务</p>
+      <select id="pomoTaskSelect" class="sortsel" style="width:100%;max-width:320px;margin-bottom:var(--space-3)" onchange="CompassUI.selectPomoTask(this.value, this.options[this.selectedIndex].text)"></select>
+      <div class="pomo-actions">
+        <button type="button" class="btn primary" id="pomoStart" onclick="CompassUI.startPomo()">开始</button>
+        <button type="button" class="btn ghost" id="pomoPause" onclick="CompassUI.pausePomo()">暂停</button>
+        <button type="button" class="btn ghost" onclick="CompassUI.resetPomo()">重置</button>
+      </div>
+    </div>
+    <div id="weekTrend" style="font-size:var(--text-sm);color:var(--ink-soft);margin-top:var(--space-3)"></div>
+  </div>
+</div>
+
+<!-- 信息墙 -->
+<div class="wrap page-view" id="viewWall" data-view="wall">
+  <div class="section-head"><h2>组队 &amp; 答疑墙</h2><span class="sub">轻量 UGC · 文明发言</span></div>
+  <div class="qq-banner">📌 TODO：在此处填入新生 QQ 群 / 微信群链接（由管理员配置）</div>
+  <p style="font-size:var(--text-sm);color:var(--ink-faint);margin-bottom:var(--space-3)">内容仅供参考，竞赛报名与时间请以主办方及本校官方通知为准。违规内容可联系学长学姐或自行删除。</p>
+  <div class="wall-toolbar">
+    <input type="search" id="wallSearch" placeholder="搜索标题/正文/赛事" oninput="CompassUI.debounceWallSearch()" />
+    <select id="wallSort" onchange="CompassUI.loadWall(true)">
+      <option value="latest">最新</option>
+      <option value="hot">热度</option>
+    </select>
+  </div>
+  <div class="wall-filters" id="wallFilters">
+    <button type="button" class="on" data-type="" onclick="CompassUI.filterWall('')">全部</button>
+    <button type="button" data-type="team" onclick="CompassUI.filterWall('team')">组队招募</button>
+    <button type="button" data-type="help" onclick="CompassUI.filterWall('help')">求助答疑</button>
+    <button type="button" data-type="share" onclick="CompassUI.filterWall('share')">经验分享</button>
+  </div>
+  <div class="wall-form" id="wallForm">
+    <div class="field"><label>类型</label>
+      <select id="wallType"><option value="team">组队招募</option><option value="help">求助答疑</option><option value="share">经验分享</option></select>
+    </div>
+    <div class="field"><label>标题</label><input type="text" id="wallTitle" maxlength="80" placeholder="简短标题" /></div>
+    <div class="field"><label>正文</label><textarea id="wallBody" maxlength="2000" placeholder="说明需求、背景或经验（4–2000 字）"></textarea></div>
+    <div class="field"><label>关联赛事（选填）</label><input type="text" id="wallComp" maxlength="120" placeholder="例：全国大学生数学建模竞赛" /></div>
+    <div class="field"><label>所需人数（组队可选）</label><input type="number" id="wallTeamSize" min="1" max="20" placeholder="例：3" /></div>
+    <div class="field"><label>所需技能（组队可选）</label><input type="text" id="wallSkills" maxlength="200" placeholder="例：Python / 建模经验" /></div>
+    <button type="button" class="btn primary" onclick="CompassUI.postWall()">发布</button>
+  </div>
+  <div id="wallList"></div>
+  <button type="button" class="btn ghost" id="wallLoadMore" style="width:100%;margin-top:var(--space-3);display:none" onclick="CompassUI.loadWall(false)">加载更多</button>
+</div>
+
+<footer id="footer">
+  <div class="wrap frow">
+    <div><b>新生指北 Compass</b> · 非营利 · 仅覆盖运营成本<br>竞赛信息每周由抓取流程汇总，<b>报名截止时间经人工复核</b>，仍请以主办方官网为准。</div>
+    <div style="text-align:right">数据：中国高等教育学会榜单 + 我爱竞赛网等聚合<br>校内赛建议由 AI 生成，仅供参考，以本校官方通知为准</div>
+  </div>
+</footer>
+
+<!-- 登录/注册 -->
+<div class="overlay" id="authOverlay" onclick="if(event.target===this)CompassUI.closeAuth()">
+  <div class="modal" role="dialog">
+    <h3 id="authModalTitle">登录</h3>
+    <div class="tabs-auth">
+      <button type="button" id="tabLogin" class="on" onclick="CompassUI.switchAuthTab('login')">登录</button>
+      <button type="button" id="tabRegister" onclick="CompassUI.switchAuthTab('register')">注册</button>
+    </div>
+    <div id="authLoginForm">
+      <div class="field"><label>用户名 / 邮箱 / 手机</label><input type="text" id="authLoginId" autocomplete="username" /></div>
+      <div class="field"><label>密码</label><input type="password" id="authLoginPw" autocomplete="current-password" /></div>
+    </div>
+    <div id="authRegisterForm" style="display:none">
+      <div class="field"><label>用户名</label><input type="text" id="authRegUser" autocomplete="username" /></div>
+      <div class="field"><label>邮箱或手机号</label><input type="text" id="authRegContact" autocomplete="email" /></div>
+      <div class="field"><label>密码（至少 8 位）</label><input type="password" id="authRegPw" autocomplete="new-password" /></div>
+      <div class="field"><label>学校（选填）</label><input type="text" id="authRegSchool" /></div>
+      <div class="field"><label>专业大类</label>
+        <select id="authRegCat"><option value="">暂不填</option><option value="综合">综合</option><option value="经管">经管</option><option value="理工">理工科</option><option value="人文">人文社科</option><option value="媒传">媒传设计</option></select>
+      </div>
+    </div>
+    <p class="hint" id="authErr" style="color:var(--vermilion);display:none"></p>
+    <div class="modal-actions">
+      <button class="ghost" type="button" onclick="CompassUI.closeAuth()">取消</button>
+      <button class="primary" type="button" id="authSubmitBtn" onclick="CompassUI.submitAuth()">登录</button>
+    </div>
+  </div>
+</div>
+
+<!-- 个性化设置 -->
+<div class="overlay" id="prefsOverlay" onclick="if(event.target===this)CompassPrefs.closeSettings()">
+  <div class="modal" role="dialog" aria-labelledby="prefsTitle">
+    <h3 id="prefsTitle">个性化设置</h3>
+    <p class="hint">主题与 slogan 会保存在本机；登录后同步到账号</p>
+    <div class="pref-section">
+      <h4>主题风格</h4>
+      <div class="settings-theme-picker" id="settingsThemePicker"></div>
+    </div>
+    <div class="pref-section">
+      <h4>个性签名 / 座右铭</h4>
+      <div class="field" style="margin-bottom:0">
+        <textarea id="prefSlogan" maxlength="120" rows="2" placeholder="例：把每一天都当成离目标更近的一步" aria-label="个性签名"></textarea>
+        <p class="hint" style="margin-top:var(--space-2);margin-bottom:0">最多 120 字 · 留空则显示默认引导文案</p>
+      </div>
+    </div>
+    <div class="pref-section">
+      <h4>正文字号</h4>
+      <div class="font-picks">
+        <button type="button" data-font-pick="sm">小</button>
+        <button type="button" data-font-pick="md" class="on">中</button>
+        <button type="button" data-font-pick="lg">大</button>
+      </div>
+    </div>
+    <div class="pref-section">
+      <label class="pref-toggle">
+        <input type="checkbox" id="prefReduceMotion" />
+        <span>减少动效（关闭淡入、过渡动画，照顾视觉敏感）</span>
+      </label>
+    </div>
+    <div class="modal-actions">
+      <button class="ghost" type="button" id="prefCancelBtn">取消</button>
+      <button class="primary" type="button" id="prefSaveBtn">保存</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- 问卷弹窗 -->
+<div class="overlay" id="surveyOverlay" onclick="if(event.target===this)closeSurvey()">
+  <div class="modal" role="dialog">
+    <h3>先认识你</h3>
+    <p class="hint">约 3 分钟 · 登录后存云端，游客仅存本机</p>
+    <div class="field"><label>目标 / 就读院校（选填）</label><input type="text" id="svSchool" placeholder="例：上海交通大学" /></div>
+    <div class="field"><label>专业大类</label>
+      <select id="svCat">
+        <option value="综合">综合</option><option value="经管">经管</option><option value="理工">理工科</option>
+        <option value="人文">人文社科</option><option value="媒传">媒传设计</option>
+      </select>
+    </div>
+    <div class="field"><label>感兴趣的方向（可多选）</label>
+      <div class="chips" id="svInterests">
+        <span class="chip" data-v="算法">算法</span><span class="chip" data-v="创业">创业</span><span class="chip" data-v="学术">学术</span>
+        <span class="chip" data-v="外语">外语</span><span class="chip" data-v="设计">设计</span><span class="chip" data-v="数学">数学</span>
+        <span class="chip" data-v="商科">商科</span><span class="chip" data-v="公益">公益</span>
+      </div>
+    </div>
+    <div class="field"><label>当前年级</label>
+      <select id="svGrade"><option value="准大一">准大一</option><option value="大一">大一</option></select>
+    </div>
+    <div class="field"><label>一句话目标</label><textarea id="svGoal" placeholder="例：大一拿一个国家级竞赛奖 / 我想创业成功"></textarea></div>
+    <div class="modal-actions">
+      <button class="ghost" type="button" onclick="closeSurvey()">取消</button>
+      <button class="primary" type="button" id="surveySubmit" onclick="submitSurvey()">生成我的规划</button>
+    </div>
+  </div>
+</div>
+
+<!-- 赛事详情抽屉 -->
+<div class="drawer-wrap" id="drawerWrap">
+  <div class="drawer-back" onclick="closeDrawer()"></div>
+  <aside class="drawer" id="drawer">
+    <button class="close-x" onclick="closeDrawer()" aria-label="关闭">×</button>
+    <div id="drawerBody"></div>
+  </aside>
+</div>
+
+<script>
+// 相对路径 API（部署在 /compass 子路径下也能工作，勿用 /api/...）
+const LS_PROFILE="compass_profile", LS_PLAN="compass_plan", LS_ROADMAP="compass_roadmap", LS_INTRA="compass_intra_cache";
+const CATS=[{k:"all",l:"全部"},{k:"综合",l:"综合"},{k:"经管",l:"经管"},{k:"理工",l:"理工科"},{k:"人文",l:"人文社科"},{k:"媒传",l:"媒传设计"}];
+const SEED=[
+ {id:"s1",name:"中国国际“互联网+”大学生创新创业大赛",cat:"综合",level:"A",org:"教育部",majors:"全专业·创业/项目",deadline:"2026-06-05",url:"#",schoolRound:true,verified:false},
+ {id:"s2",name:"“挑战杯”全国大学生课外学术科技作品竞赛",cat:"综合",level:"A",org:"共青团中央 等",majors:"全专业·学术科技",deadline:"2026-06-18",url:"#",schoolRound:true,verified:false},
+ {id:"s3",name:"全国大学生数学建模竞赛",cat:"理工",level:"A",org:"中国工业与应用数学学会",majors:"数学/统计/计算机/工科",deadline:"2026-09-12",url:"#",schoolRound:false,verified:false},
+ {id:"s4",name:"全国大学生电子设计竞赛",cat:"理工",level:"A",org:"教育部·工信部",majors:"电子/电气/自动化",deadline:"2026-06-30",url:"#",schoolRound:false,verified:false},
+ {id:"s5",name:"蓝桥杯全国软件和信息技术专业人才大赛",cat:"理工",level:"List",org:"工信部人才交流中心",majors:"计算机/软件/电子",deadline:"2026-06-08",url:"#",schoolRound:false,verified:false},
+ {id:"s6",name:"“中国软件杯”大学生软件设计大赛",cat:"理工",level:"List",org:"工信部·教育部 等",majors:"软件/计算机",deadline:"2026-06-30",url:"#",schoolRound:false,verified:false},
+ {id:"s7",name:"全国大学生市场调查与分析大赛（正大杯）",cat:"经管",level:"List",org:"中国商业统计学会",majors:"市场营销/经济/统计",deadline:"2026-06-15",url:"#",schoolRound:true,verified:false},
+ {id:"s8",name:"全国大学生文化旅游与会展竞赛",cat:"经管",level:"List",org:"中国商业经济学会 等",majors:"会展/旅游管理",deadline:"2026-06-30",url:"#",schoolRound:false,verified:false},
+ {id:"s9",name:"“外研社·国才杯”全国大学生外语能力大赛",cat:"人文",level:"List",org:"外研社",majors:"外语/全专业",deadline:"2026-06-12",url:"#",schoolRound:true,verified:false},
+ {id:"s10",name:"全国大学生英语竞赛（NECCS）",cat:"人文",level:"List",org:"大学外语教学研究会",majors:"全专业·英语",deadline:"2026-06-03",url:"#",schoolRound:true,verified:false},
+ {id:"s11",name:"全国大学生广告艺术大赛",cat:"媒传",level:"List",org:"教育部广告学教指委",majors:"广告/视传/数媒/新闻",deadline:"2026-06-20",url:"#",schoolRound:false,verified:false},
+ {id:"s12",name:"中国大学生计算机设计大赛",cat:"媒传",level:"List",org:"相关教指委",majors:"数媒/动画/设计",deadline:"2026-07-05",url:"#",schoolRound:true,verified:false},
+];
+const TEMPLATE=[
+ {step:"选定 1 个对口竞赛 + 找到 2–3 名队友",when:"6 月上旬",tip:"先看往届获奖作品定方向"},
+ {step:"完成选题调研，确定作品/项目方向",when:"7 月",tip:"找一位专业老师做指导"},
+ {step:"做出初版作品 / 完成校内初赛报名",when:"8 月",tip:"留足迭代时间"},
+ {step:"打磨答辩材料，冲省赛",when:"9–10 月",tip:"多练 5 分钟陈述"},
+ {step:"复盘整理成果，沉淀进简历/作品集",when:"赛后一周内",tip:""},
+];
+
+let DATA=[], activeCat="all", sortBy="deadline", searchQ="", feedAnimated=false;
+let profile=loadJSON(LS_PROFILE,{});
+let plan=loadJSON(LS_PLAN,[]);
+window.profile=profile;
+window.plan=plan;
+let roadmap=loadJSON(LS_ROADMAP,[]);
+window.syncRoadmap=function(r){roadmap=r;saveJSON(LS_ROADMAP,r);renderRoadmap();};
+window.getRoadmap=function(){return roadmap;};
+let intraCache=loadJSON(LS_INTRA,{});
+let surveyInterests=new Set(profile.interests||[]);
+
+const now=new Date();
+const daysLeft=iso=>Math.round((new Date(iso)-now)/86400000);
+const fmt=iso=>{const d=new Date(iso);return (d.getMonth()+1)+"月"+d.getDate()+"日"};
+function urgency(iso){const n=daysLeft(iso);if(n<0)return{cls:"calm",txt:"已截止"};if(n<=7)return{cls:"hot",txt:"仅剩 "+n+" 天"};if(n<=21)return{cls:"warn",txt:n+" 天后截止"};return{cls:"calm",txt:n+" 天后截止"}}
+const catLabel=c=>({理工:"理工科",人文:"人文社科",媒传:"媒传设计"}[c]||c);
+function esc(s){const d=document.createElement("div");d.textContent=s??"";return d.innerHTML;}
+function isAggUrl(u){return /52jingsai\.com/i.test(u||"");}
+function entryLink(c,cls="btn"){
+  if(!c.url||c.url==="#")return "";
+  const label=isAggUrl(c.url)?"查看通知":"官网报名";
+  return `<a class="${cls}" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer" aria-label="${label}：${esc(c.name)}">${label}</a>`;
+}
+function loadJSON(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}}
+function saveJSON(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function savePlan(){saveJSON(LS_PLAN,plan);window.plan=plan;renderPlan();renderFeed();window.Dashboard?.refresh?.();}
+function saveProfile(p){profile=p;window.profile=p;saveJSON(LS_PROFILE,p);updateSurveyStatus();window.Dashboard?.refresh?.();}
+
+function isInPlan(c){
+  if(window.CompassCore?.getUser?.()){
+    const tasks=window.CompassCore.getTasks?.()||[];
+    return tasks.some(t=>t.related_competition_id===c.id||(t.title===c.name&&t.source==="competition"));
+  }
+  return plan.some(p=>p.id===c.id||p.name===c.name);
+}
+
+function catBoost(c){
+  if(!profile.cat)return 0;
+  if(c.cat===profile.cat)return -100;
+  if(c.cat==="综合")return -20;
+  return 40;
+}
+function sortList(list){
+  list.sort((a,b)=>{
+    const w=catBoost(a)-catBoost(b);
+    if(w)return w;
+    if(sortBy==="deadline")return new Date(a.deadline||"2099")-new Date(b.deadline||"2099");
+    return (a.level==="A"?0:1)-(b.level==="A"?0:1)||new Date(a.deadline||"2099")-new Date(b.deadline||"2099");
+  });
+}
+function filterSearch(list){
+  const q=searchQ.trim().toLowerCase();
+  if(!q)return list;
+  return list.filter(c=>(c.name||"").toLowerCase().includes(q)||(c.org||"").toLowerCase().includes(q));
+}
+function loadingHTML(msg){
+  return `<div class="loading-row" role="status"><span class="loading-dot"></span><span>${esc(msg)}</span></div>`;
+}
+function skeletonHTML(){
+  return `<div class="skeleton" aria-hidden="true"><div class="skeleton-line w80"></div><div class="skeleton-line w60"></div><div class="skeleton-line w40"></div></div>`;
+}
+function toggleNav(){
+  const nav=document.getElementById("mainNav"), btn=document.getElementById("menuBtn");
+  const open=nav.classList.toggle("open");
+  btn.setAttribute("aria-expanded",open?"true":"false");
+  btn.setAttribute("aria-label",open?"关闭导航菜单":"打开导航菜单");
+}
+function closeNav(){document.getElementById("mainNav").classList.remove("open");document.getElementById("menuBtn").setAttribute("aria-expanded","false");}
+function initMobilePanels(){
+  if(window.matchMedia("(max-width:920px)").matches){
+    document.querySelectorAll(".rail-panel").forEach(d=>{if(!d.id||d.id!=="roadmapPanel")d.removeAttribute("open");});
+  }
+}
+
+async function loadData(){
+  try{
+    const r=await fetch("api/competitions",{credentials:"include"});
+    if(!r.ok)throw 0;
+    const j=await r.json();
+    DATA=j.items||[];
+    window.DATA=DATA;
+    if(j.updatedAt)document.getElementById("updatedAt").textContent="本周已更新 · "+j.updatedAt.slice(0,10);
+  }catch{DATA=SEED;window.DATA=DATA;document.getElementById("updatedAt").textContent="本周已更新（离线示例）";}
+  renderTabs();renderFocus();renderFeed();
+  if((location.hash||"#home").includes("home"))window.Dashboard?.refresh?.();
+}
+
+function renderTabs(){
+  const el=document.getElementById("tabs");el.innerHTML="";
+  CATS.forEach(c=>{
+    const n=c.k==="all"?DATA.length:DATA.filter(x=>x.cat===c.k).length;
+    const b=document.createElement("button");
+    b.className="tab"+(activeCat===c.k?" active":"");
+    b.setAttribute("role","tab");
+    b.setAttribute("aria-selected",activeCat===c.k?"true":"false");
+    b.innerHTML=c.l+'<span class="n">'+n+'</span>';
+    b.onclick=()=>{activeCat=c.k;renderTabs();renderFocus();renderFeed();};
+    el.appendChild(b);
+  });
+}
+
+function renderFocus(){
+  const block=document.getElementById("focusBlock"), list=document.getElementById("focusList");
+  let soon=filterSearch(DATA.filter(c=>c.deadline&&daysLeft(c.deadline)>=0&&daysLeft(c.deadline)<=14));
+  if(activeCat!=="all")soon=soon.filter(c=>c.cat===activeCat);
+  sortList(soon);
+  if(!soon.length){block.style.display="none";return;}
+  block.style.display="block";list.innerHTML="";
+  soon.slice(0,5).forEach(c=>{
+    const u=urgency(c.deadline);
+    const row=document.createElement("div");
+    row.className="focus-item";
+    row.innerHTML=`<span class="n">${esc(c.name)}</span><span class="d">${fmt(c.deadline)} · ${u.txt}</span>`;
+    row.onclick=()=>openDrawer(c.id);
+    list.appendChild(row);
+  });
+}
+
+function renderFeed(){
+  let list=activeCat==="all"?[...DATA]:DATA.filter(c=>c.cat===activeCat);
+  list=filterSearch(list);
+  sortList(list);
+  document.getElementById("cnt").textContent=list.length;
+  const f=document.getElementById("feedlist");f.innerHTML="";
+  if(!list.length){
+    f.innerHTML=`<div class="empty-state"><p>${searchQ.trim()?"没有找到匹配的赛事":"当前分类下暂无赛事"}</p><p class="sub">${searchQ.trim()?"试试换个关键词，或清除搜索":"切换上方分类，或先填问卷让推荐更对口"}</p>
+      ${searchQ.trim()?'<button type="button" class="btn ghost" onclick="clearSearch()">清除搜索</button>':'<button type="button" class="btn primary" onclick="openSurvey()">填写问卷</button>'}</div>`;
+    return;
+  }
+  list.forEach((c,i)=>{
+    const u=c.deadline?urgency(c.deadline):{cls:"calm",txt:"时间待更新"};
+    const isHot=u.cls==="hot";
+    const added=isInPlan(c);
+    const lvl=c.level==="A"?'<span class="tag lvlA">A类</span>':'<span class="tag lvlList">榜单</span>';
+    const sr=c.schoolRound===true?'<span class="tag school">校赛</span>':'';
+    const vf=c.verified?'<span class="tag verified">已核实</span>':'<span class="tag unverified">待核实</span>';
+    const card=document.createElement("article");
+    card.className="card"+(isHot?" card--hot":"")+(!feedAnimated?" card-enter":"");
+    if(!feedAnimated)card.style.animationDelay=(Math.min(i,8)*0.05)+"s";
+    card.dataset.id=c.id;
+    card.innerHTML=`
+      ${isHot?'<span class="card-badge">即将截止</span>':""}
+      <div class="card-head">
+        <h3 class="clickable" onclick="openDrawer('${c.id}')">${esc(c.name)}</h3>
+        <div class="tags">${lvl}<span class="tag cat">${catLabel(c.cat)}</span>${sr}</div>
+      </div>
+      <div class="card-deadline">
+        <span class="dl-label">截止</span>
+        <span class="dl-date">${c.deadline?fmt(c.deadline):"待更新"}</span>
+        <span class="urg ${u.cls}">${u.txt}</span>
+        ${vf}
+      </div>
+      <div class="card-meta">主办 · ${esc(c.org||"—")}</div>
+      <div class="card-meta">适合 · ${esc(c.majors||"—")}</div>
+      <div class="row2">
+        <div class="actions">
+          <button type="button" class="btn ghost" onclick="openDrawer('${c.id}')" aria-label="查看 ${esc(c.name)} 详情">详情</button>
+          <button type="button" class="btn ghost" onclick="askIntraCard(this,'${c.id}')">校内赛？</button>
+          ${entryLink(c)}
+          <button type="button" class="btn ${added?"added":"primary"}" onclick="addPlan('${c.id}')" aria-label="${added?"已加入计划":"加入计划"}">${added?"已加入":"+ 加入计划"}</button>
+        </div>
+      </div>
+      <div class="intra"></div>`;
+    f.appendChild(card);
+  });
+  if(!feedAnimated)feedAnimated=true;
+}
+function clearSearch(){document.getElementById("searchQ").value="";searchQ="";renderFocus();renderFeed();}
+
+function getComp(id){return DATA.find(x=>x.id===id)||null;}
+window.getComp=getComp;
+
+function openDrawer(id){
+  const c=getComp(id);if(!c)return;
+  const u=c.deadline?urgency(c.deadline):{cls:"calm",txt:"时间待更新"};
+  const vf=c.verified?"已核实":"待核实";
+  document.getElementById("drawerBody").innerHTML=`
+    <h3>${esc(c.name)}</h3>
+    <div class="meta">主办 · ${esc(c.org||"—")}<br>适合 · ${esc(c.majors||"—")}<br>
+      分类 · ${catLabel(c.cat)} · ${c.level==="A"?"A类·榜单":"榜单赛事"}<br>
+      截止 · ${c.deadline?fmt(c.deadline)+"（"+u.txt+"）":"待更新"} · <b>${vf}</b>
+      ${c.schoolRound===true?" · 通常需校赛":""}</div>
+    <div class="drawer-actions">
+      ${entryLink(c,"btn primary")}
+      <button class="btn" onclick="addPlan('${c.id}');closeDrawer()">+ 加入计划</button>
+      <button class="btn ghost" onclick="CompassUI.splitCompTasks('${c.id}')">拆成任务</button>
+      <button class="btn ghost" onclick="CompassUI.openWallForComp('${esc(c.name).replace(/'/g,"\\'")}');closeDrawer()">相关组队帖</button>
+    </div>
+    <div id="drawerIntra">${loadingHTML("正在调研参赛路径")}${skeletonHTML()}</div>`;
+  document.getElementById("drawerWrap").classList.add("open");
+  loadIntra(c.id,"drawerIntra");
+}
+function closeDrawer(){document.getElementById("drawerWrap").classList.remove("open");}
+
+function renderIntraHTML(d){
+  return `<div class="hd">▷ 参赛路径调研</div>
+    <div class="kv"><b>是否需先过校内赛：</b>${esc(d.needsSchoolRound||"视学校而定")}</div>
+    <div class="kv"><b>校内赛大致时间：</b>${esc(d.timing||"—")}</div>
+    ${Array.isArray(d.advice)&&d.advice.length?'<ul>'+d.advice.map(a=>"<li>"+esc(a)+"</li>").join("")+"</ul>":""}
+    <div class="caveat">${esc(d.caveat||"具体安排以本校官方通知为准。")}</div>`;
+}
+
+async function loadIntra(id,targetId){
+  const c=getComp(id);if(!c)return;
+  const el=document.getElementById(targetId);
+  if(intraCache[id]){el.innerHTML=renderIntraHTML(intraCache[id]);return;}
+  try{
+    const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),90000);
+    const r=await fetch("api/intramural",{method:"POST",headers:{"Content-Type":"application/json"},credentials:"include",
+      body:JSON.stringify({competition:c.name,school:profile.school||""}),signal:ctrl.signal});
+    clearTimeout(timer);
+    if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.error||"服务不可用");}
+    const d=await r.json();
+    intraCache[id]=d;saveJSON(LS_INTRA,intraCache);
+    el.innerHTML=renderIntraHTML(d);
+  }catch(e){
+    el.innerHTML=`<div class="kv">AI 暂不可用（${esc(e.message)}）。请以本校教务处/团委通知为准。</div>`;
+  }
+}
+
+async function askIntraCard(btn,id){
+  const card=btn.closest(".card");const box=card.querySelector(".intra");
+  if(box.classList.contains("open")){box.classList.remove("open");return;}
+  box.classList.add("open");
+  const c=getComp(id);if(!c)return;
+  if(intraCache[id]){box.innerHTML=renderIntraHTML(intraCache[id]);return;}
+  box.innerHTML=loadingHTML("正在调研参赛路径")+skeletonHTML();
+  const tmp="intra_"+id.replace(/\W/g,"");
+  box.innerHTML=`<div id="${tmp}">${loadingHTML("正在调研参赛路径")}${skeletonHTML()}</div>`;
+  await loadIntra(id,tmp);
+  box.innerHTML=document.getElementById(tmp).innerHTML;
+}
+
+function addPlan(idOrName){
+  const c=typeof idOrName==="string"&&getComp(idOrName)?getComp(idOrName):DATA.find(x=>x.name===idOrName);
+  const name=c?c.name:idOrName;
+  const pid=c?.id||("p_"+name.slice(0,8)+Date.now());
+  if(plan.some(p=>p.id===pid||p.name===name))return;
+  plan.push({id:pid,type:"competition",name,deadline:c?.deadline||null});
+  savePlan();toast("已加入计划："+(name.length>14?name.slice(0,14)+"…":name));
+}
+function addCustomTodo(){
+  const title=document.getElementById("customTitle").value.trim();
+  const date=document.getElementById("customDate").value;
+  if(!title){toast("请填写待办标题");return;}
+  plan.push({id:"c_"+Date.now(),type:"custom",name:title,deadline:date||null});
+  document.getElementById("customTitle").value="";document.getElementById("customDate").value="";
+  savePlan();toast("已添加自定义待办");
+}
+function rmPlan(id){plan=plan.filter(p=>p.id!==id);savePlan();}
+
+function renderPlan(){
+  const el=document.getElementById("planList");
+  document.getElementById("planCount").textContent=plan.length?("· "+plan.length):"";
+  if(!plan.length){
+    el.innerHTML=`<div class="plan-empty"><p>计划还是空的</p><p class="sub">从竞赛雷达点「加入计划」，或下方添加自定义待办</p><button type="button" class="btn ghost" onclick="document.getElementById('feed').scrollIntoView({behavior:'smooth'})">去看竞赛</button></div>`;
+    return;
+  }
+  plan.sort((a,b)=>new Date(a.deadline||"2099")-new Date(b.deadline||"2099"));
+  el.innerHTML="";
+  plan.forEach(p=>{
+    const item=document.createElement("div");item.className="plan-item";
+    const tag=p.type==="custom"?"自定义 · ":"";
+    item.innerHTML=`<div class="node"></div><div class="plan-body">
+      <div class="t">${tag}${esc(p.name)}</div>
+      <div class="d">${p.deadline?("截止 · "+fmt(p.deadline)+" · 距今 "+daysLeft(p.deadline)+" 天"):"时间待定"}</div>
+      </div><button type="button" class="plan-rm" onclick="rmPlan('${p.id}')" aria-label="移除 ${esc(p.name)}">×</button>`;
+    el.appendChild(item);
+  });
+}
+
+function renderRoadmap(){
+  const panel=document.getElementById("roadmapPanel"), out=document.getElementById("roadmapOut"), note=document.getElementById("roadmapNote");
+  if(!roadmap.length){panel.style.display="none";return;}
+  panel.style.display="block";
+  if(window.matchMedia("(min-width:921px)").matches)panel.setAttribute("open","");
+  out.innerHTML="";note.textContent="由 Kimi 根据你的问卷生成 · 仅供参考";
+  roadmap.forEach(m=>{
+    const d=document.createElement("div");d.className="roadmap-ms";
+    d.innerHTML=`<div class="rw">${esc(m.step||"")}</div>${m.when?'<div class="when">'+esc(m.when)+"</div>":""}${m.tip?'<div style="font-size:11.5px;color:var(--ink-soft);margin-top:2px">提示：'+esc(m.tip)+"</div>":""}`;
+    out.appendChild(d);
+  });
+}
+
+function updateSurveyStatus(){
+  const el=document.getElementById("surveyStatus");
+  if(profile.cat)el.textContent="已填写 · 专业大类："+catLabel(profile.cat)+" · 点击可修改";
+  else el.textContent="填完后竞赛雷达会按你的专业大类优先排序";
+}
+
+function openSurvey(){
+  document.getElementById("svSchool").value=profile.school||"";
+  document.getElementById("svCat").value=profile.cat||"综合";
+  document.getElementById("svGrade").value=profile.grade||"准大一";
+  document.getElementById("svGoal").value=profile.goal||"";
+  surveyInterests=new Set(profile.interests||[]);
+  document.querySelectorAll("#svInterests .chip").forEach(ch=>{
+    ch.classList.toggle("on",surveyInterests.has(ch.dataset.v));
+  });
+  document.getElementById("surveyOverlay").classList.add("open");
+}
+function closeSurvey(){document.getElementById("surveyOverlay").classList.remove("open");}
+
+async function submitSurvey(){
+  const p={
+    school:document.getElementById("svSchool").value.trim(),
+    cat:document.getElementById("svCat").value,
+    interests:[...surveyInterests],
+    grade:document.getElementById("svGrade").value,
+    goal:document.getElementById("svGoal").value.trim(),
+  };
+  saveProfile(p);
+  closeSurvey();renderFocus();renderFeed();updateSurveyStatus();window.Dashboard?.refresh?.();
+  const btn=document.getElementById("surveySubmit");btn.textContent="生成中…";btn.disabled=true;
+  try{
+    const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),90000);
+    const r=await fetch("api/plan",{method:"POST",headers:{"Content-Type":"application/json"},credentials:"include",body:JSON.stringify(p),signal:ctrl.signal});
+    clearTimeout(timer);
+    if(r.ok){roadmap=(await r.json()).milestones||[];saveJSON(LS_ROADMAP,roadmap);renderRoadmap();toast("规划已生成");}
+    else{const j=await r.json().catch(()=>({}));toast("AI 规划失败："+(j.error||r.status));}
+  }catch(e){toast(e.name==="AbortError"?"规划请求超时":"网络异常");}
+  btn.textContent="生成我的规划";btn.disabled=false;
+}
+
+async function decompose(){
+  const v=document.getElementById("goalInput").value.trim()||profile.goal||"大一拿一个国家级竞赛奖";
+  const out=document.getElementById("goalOut"), note=document.getElementById("aiNote"), go=document.getElementById("goalGo");
+  out.innerHTML=loadingHTML("AI 正在拆解目标")+skeletonHTML();
+  note.textContent="通常需要 10–30 秒，请稍候";go.textContent="…";go.style.pointerEvents="none";go.setAttribute("aria-busy","true");
+  let ms=null;
+  try{
+    const ctrl=new AbortController();const timer=setTimeout(()=>ctrl.abort(),90000);
+    const r=await fetch("api/decompose",{method:"POST",headers:{"Content-Type":"application/json"},credentials:"include",
+      body:JSON.stringify({goal:v,profile:JSON.stringify(profile)}),signal:ctrl.signal});
+    clearTimeout(timer);
+    if(r.ok)ms=(await r.json()).milestones;
+    else{const j=await r.json().catch(()=>({}));note.textContent="AI 调用失败："+(j.error||("HTTP "+r.status));}
+  }catch(e){note.textContent=e.name==="AbortError"?"请求超时（>90 秒），请稍后重试。":"网络异常，请确认服务已启动。";}
+  out.innerHTML="";
+  if(!ms||!ms.length){ms=TEMPLATE;if(!note.textContent)note.textContent="AI 暂不可用，已用通用模板。";}
+  else note.textContent="由 Kimi 按你的目标生成。";
+  go.textContent="拆";go.style.pointerEvents="auto";go.removeAttribute("aria-busy");
+  ms.forEach((m,i)=>{
+    const d=document.createElement("div");d.className="ms";d.style.animationDelay=(i*0.07)+"s";
+    d.innerHTML=`<div class="num">${String(i+1).padStart(2,"0")}</div><div class="mtext">${esc(m.step||"")}
+      ${m.when?'<span class="when">'+esc(m.when)+"</span>":""}${m.tip?'<span class="tip">提示：'+esc(m.tip)+"</span>":""}</div>`;
+    if(window.CompassCore?.getUser?.()){
+      const b=document.createElement("button");b.type="button";b.className="btn ghost";
+      b.style.cssText="margin-left:30px;margin-top:4px;font-size:11px;padding:4px 10px;min-height:auto";
+      b.textContent="+ 转为任务";b.onclick=()=>CompassUI.addMilestoneAsTask(m.step,m.when);
+      d.appendChild(b);
+    }
+    out.appendChild(d);
+  });
+}
+
+let tT;
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(tT);tT=setTimeout(()=>t.classList.remove("show"),2200);}
+
+document.getElementById("sort").onchange=e=>{sortBy=e.target.value;renderFocus();renderFeed();};
+document.getElementById("searchQ").addEventListener("input",e=>{searchQ=e.target.value;renderFocus();renderFeed();});
+document.getElementById("goalInput").addEventListener("keydown",e=>{if(e.key==="Enter")decompose();});
+document.getElementById("svInterests").addEventListener("click",e=>{
+  const ch=e.target.closest(".chip");if(!ch)return;
+  ch.classList.toggle("on");
+  if(ch.classList.contains("on"))surveyInterests.add(ch.dataset.v);else surveyInterests.delete(ch.dataset.v);
+});
+initMobilePanels();
+window.addEventListener("resize",initMobilePanels);
+updateSurveyStatus();renderRoadmap();renderPlan();loadData();
+</script>
+<script src="js/preferences.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/compass-modules.js"></script>
+<script src="js/calendar-workbench.js"></script>
+</body>
+</html>

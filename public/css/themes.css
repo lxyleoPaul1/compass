@@ -1,0 +1,224 @@
+/* ============================================================
+   Compass 主题系统 — 仅通过切换 [data-theme] 改变 CSS 变量值
+   新增主题：复制一组 [data-theme="xxx"] 并调整变量即可
+   ============================================================ */
+
+/* --- 1. editorial（默认）杂志/编辑风：纸感米色 + 墨蓝 + 朱红 --- */
+[data-theme="editorial"] {
+  --paper: #F4EEE3;
+  --paper-2: #EFE7D8;
+  --ink: #1E1B2E;
+  --ink-soft: #4A4660;
+  --ink-faint: #8C8799;
+  --vermilion: #D8442B;
+  --vermilion-deep: #B23320;
+  --pine: #1F5C4A;
+  --amber: #C98A1E;
+  --line: #D9CEBC;
+  --card: #FBF7EF;
+  --shadow: rgba(30, 27, 46, 0.1);
+  --overlay-bg: rgba(30, 27, 46, 0.45);
+  --drawer-back: rgba(30, 27, 46, 0.4);
+  --input-bg: #FFFFFF;
+  --on-accent: #FFFFFF;
+  --card-hot-bg: #FBF4EF;
+  --card-badge-bg: #F3DDD7;
+  --card-badge-color: var(--vermilion-deep);
+  --urg-warn-bg: #F6E6C5;
+  --urg-warn-color: var(--amber);
+  --tag-lvlA-border: rgba(178, 51, 32, 0.25);
+  --tag-lvlList-border: rgba(31, 92, 74, 0.25);
+  --tag-school-border: rgba(201, 138, 30, 0.35);
+  --tag-verified-border: rgba(31, 92, 74, 0.3);
+  --panel-dark-bg: var(--ink);
+  --panel-dark-fg: var(--paper);
+  --panel-dark-muted: rgba(244, 238, 227, 0.65);
+  --panel-dark-subtle: rgba(244, 238, 227, 0.12);
+  --panel-dark-input-bg: rgba(244, 238, 227, 0.08);
+  --panel-dark-input-border: rgba(244, 238, 227, 0.25);
+  --panel-dark-text: rgba(244, 238, 227, 0.92);
+  --panel-dark-text-muted: rgba(244, 238, 227, 0.55);
+  --live-pulse: rgba(31, 92, 74, 0.45);
+  --noise-opacity: 0.5;
+  --slogan-accent: var(--vermilion);
+  color-scheme: light;
+}
+
+/* --- 2. nocturne 暗色：沉稳护眼，克制青绿强调 --- */
+[data-theme="nocturne"] {
+  --paper: #141820;
+  --paper-2: #1A2030;
+  --ink: #E8E4DC;
+  --ink-soft: #B8B4AC;
+  --ink-faint: #7A7670;
+  --vermilion: #5BA4A4;
+  --vermilion-deep: #4A8E8E;
+  --pine: #6B9080;
+  --amber: #C9A227;
+  --line: #2A3040;
+  --card: #1C2230;
+  --shadow: rgba(0, 0, 0, 0.35);
+  --overlay-bg: rgba(0, 0, 0, 0.6);
+  --drawer-back: rgba(0, 0, 0, 0.55);
+  --input-bg: #222838;
+  --on-accent: #0E1218;
+  --card-hot-bg: #252035;
+  --card-badge-bg: #2A3545;
+  --card-badge-color: #7EC8C8;
+  --urg-warn-bg: #3A3420;
+  --urg-warn-color: #E8C547;
+  --tag-lvlA-border: rgba(126, 200, 200, 0.35);
+  --tag-lvlList-border: rgba(107, 144, 128, 0.35);
+  --tag-school-border: rgba(201, 162, 39, 0.35);
+  --tag-verified-border: rgba(107, 144, 128, 0.4);
+  --panel-dark-bg: #0E1218;
+  --panel-dark-fg: #E8E4DC;
+  --panel-dark-muted: rgba(232, 228, 220, 0.6);
+  --panel-dark-subtle: rgba(232, 228, 220, 0.1);
+  --panel-dark-input-bg: rgba(255, 255, 255, 0.06);
+  --panel-dark-input-border: rgba(255, 255, 255, 0.15);
+  --panel-dark-text: rgba(232, 228, 220, 0.92);
+  --panel-dark-text-muted: rgba(232, 228, 220, 0.5);
+  --live-pulse: rgba(91, 164, 164, 0.45);
+  --noise-opacity: 0.15;
+  --slogan-accent: #7EC8C8;
+  color-scheme: dark;
+}
+
+/* --- 3. daylight 清爽明亮：白底 + 海军蓝 + 珊瑚强调 --- */
+[data-theme="daylight"] {
+  --paper: #FAFAF8;
+  --paper-2: #F0F2F5;
+  --ink: #1A2744;
+  --ink-soft: #4A5568;
+  --ink-faint: #8896A8;
+  --vermilion: #E05A4A;
+  --vermilion-deep: #C44A3C;
+  --pine: #2D6A6A;
+  --amber: #D4920A;
+  --line: #E2E6EC;
+  --card: #FFFFFF;
+  --shadow: rgba(26, 39, 68, 0.08);
+  --overlay-bg: rgba(26, 39, 68, 0.35);
+  --drawer-back: rgba(26, 39, 68, 0.3);
+  --input-bg: #FFFFFF;
+  --on-accent: #FFFFFF;
+  --card-hot-bg: #FFF5F3;
+  --card-badge-bg: #FFE8E5;
+  --card-badge-color: var(--vermilion-deep);
+  --urg-warn-bg: #FFF3D6;
+  --urg-warn-color: #9A7209;
+  --tag-lvlA-border: rgba(224, 90, 74, 0.3);
+  --tag-lvlList-border: rgba(45, 106, 106, 0.3);
+  --tag-school-border: rgba(212, 146, 10, 0.35);
+  --tag-verified-border: rgba(45, 106, 106, 0.35);
+  --panel-dark-bg: #1A2744;
+  --panel-dark-fg: #FAFAF8;
+  --panel-dark-muted: rgba(250, 250, 248, 0.65);
+  --panel-dark-subtle: rgba(250, 250, 248, 0.12);
+  --panel-dark-input-bg: rgba(255, 255, 255, 0.08);
+  --panel-dark-input-border: rgba(255, 255, 255, 0.22);
+  --panel-dark-text: rgba(250, 250, 248, 0.95);
+  --panel-dark-text-muted: rgba(250, 250, 248, 0.55);
+  --live-pulse: rgba(45, 106, 106, 0.4);
+  --noise-opacity: 0.25;
+  --slogan-accent: var(--vermilion);
+  color-scheme: light;
+}
+
+/* --- 4. grove 清新自然：低饱和绿 + 暖米 --- */
+[data-theme="grove"] {
+  --paper: #F2F5F0;
+  --paper-2: #E8EDE4;
+  --ink: #2C3E2E;
+  --ink-soft: #4A5D4C;
+  --ink-faint: #7A8E7C;
+  --vermilion: #3D7A5A;
+  --vermilion-deep: #2F6248;
+  --pine: #2D5A4A;
+  --amber: #B8860B;
+  --line: #CDD8C8;
+  --card: #FAFCF9;
+  --shadow: rgba(44, 62, 46, 0.08);
+  --overlay-bg: rgba(44, 62, 46, 0.4);
+  --drawer-back: rgba(44, 62, 46, 0.35);
+  --input-bg: #FFFFFF;
+  --on-accent: #FFFFFF;
+  --card-hot-bg: #EDF5EE;
+  --card-badge-bg: #D4E8D8;
+  --card-badge-color: var(--vermilion-deep);
+  --urg-warn-bg: #EDE8D0;
+  --urg-warn-color: #8A6914;
+  --tag-lvlA-border: rgba(61, 122, 90, 0.35);
+  --tag-lvlList-border: rgba(45, 90, 74, 0.35);
+  --tag-school-border: rgba(184, 134, 11, 0.35);
+  --tag-verified-border: rgba(45, 90, 74, 0.35);
+  --panel-dark-bg: #2C3E2E;
+  --panel-dark-fg: #F2F5F0;
+  --panel-dark-muted: rgba(242, 245, 240, 0.65);
+  --panel-dark-subtle: rgba(242, 245, 240, 0.12);
+  --panel-dark-input-bg: rgba(255, 255, 255, 0.08);
+  --panel-dark-input-border: rgba(255, 255, 255, 0.2);
+  --panel-dark-text: rgba(242, 245, 240, 0.92);
+  --panel-dark-text-muted: rgba(242, 245, 240, 0.55);
+  --live-pulse: rgba(61, 122, 90, 0.4);
+  --noise-opacity: 0.35;
+  --slogan-accent: var(--vermilion);
+  color-scheme: light;
+}
+
+/* 字号档位（与主题独立） */
+html[data-font-scale="sm"] {
+  --text-xs: 10px;
+  --text-sm: 11px;
+  --text-base: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 20px;
+}
+html[data-font-scale="md"] {
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-base: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+}
+html[data-font-scale="lg"] {
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: 20px;
+  --text-xl: 28px;
+}
+
+/* 减少动效 */
+html[data-reduce-motion="true"] *,
+html[data-reduce-motion="true"] *::before,
+html[data-reduce-motion="true"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+
+/* 主题切换平滑过渡（减少动效时会被上面规则覆盖） */
+body,
+header.top,
+.card,
+.modal,
+.btn,
+.pill,
+.tab,
+.rail-panel,
+.chat-wrap,
+.wall-card,
+.pomo-box,
+.focus-block,
+.check-item,
+.cal-cell,
+.hero,
+footer,
+.slogan-bar {
+  transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+}

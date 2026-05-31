@@ -1,0 +1,887 @@
+{
+  "updatedAt": "2026-05-31T21:01:58.777Z",
+  "count": 42,
+  "items": [
+    {
+      "id": "e66f55f352",
+      "name": "【榜单赛事】2026年第八届全国大学生工业设计大赛",
+      "cat": "媒传",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23758-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "3e13f14e1e",
+      "name": "【榜单竞赛，6月5日截止报名】2026年第八届大学生语言文字能力大赛报名通知，专业不限",
+      "cat": "综合",
+      "level": "List",
+      "org": "中国语文报刊协会读写教学分会",
+      "majors": "",
+      "deadline": "2026-06-05",
+      "url": "https://www.52jingsai.com/article-23434-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-05"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "51fa05338e",
+      "name": "【榜单赛事，6月5日截止】2026年第四届全国大学生教育教学能力大赛报名通知！初赛免费答题，决赛提交作品",
+      "cat": "综合",
+      "level": "List",
+      "org": "中国智慧工程研究会职业教育专业委员会 、黑龙江省创新教育研究院、全国大学生教育教学能力大赛组委会",
+      "majors": "",
+      "deadline": "2026-06-05",
+      "url": "https://www.52jingsai.com/article-23649-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-05"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "7ca300f6b4",
+      "name": "【榜单赛事】2026年第12届睿抗机器人开发者大赛",
+      "cat": "理工",
+      "level": "List",
+      "org": "工业和信息化部人才交流中心",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23619-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "db359a181c",
+      "name": "【榜单赛事】2026年（第二十届）全国大学生文化旅游与会展竞赛",
+      "cat": "经管",
+      "level": "List",
+      "org": "中国国际贸易促进委员会商业行业委员会、中国国际商会商业行业商会和中国商业经济学会；报名截止时间：2026年6月30日",
+      "majors": "",
+      "deadline": "2026-06-30",
+      "url": "https://www.52jingsai.com/article-23618-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-30"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "4c755e1fd0",
+      "name": "【榜单赛事】2026年第二十届iCAN大学生创新创业大赛",
+      "cat": "综合",
+      "level": "List",
+      "org": "中国创造学会",
+      "majors": "",
+      "deadline": "2026-04-01",
+      "url": "https://www.52jingsai.com/article-23617-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-04-01"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "ea444458cb",
+      "name": "【榜单赛事】第十五届“中国软件杯”大学生软件设计大赛",
+      "cat": "理工",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-06-30",
+      "url": "https://www.52jingsai.com/article-23583-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-30"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "04b6def23d",
+      "name": "【榜单赛事】2026年中国大学生机械工程创新创意大赛——工业工程与精益管理创新赛",
+      "cat": "理工",
+      "level": "List",
+      "org": "中国机械工程学会；校赛报名时间：2026年4月-6月",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23579-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "6e060a7750",
+      "name": "普通高校大学生人文类竞赛分析报告首次发布",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23561-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "aea0ccff0a",
+      "name": "普通高校大学生商科类竞赛指数（2026版）发布",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23560-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "352c5bb4e4",
+      "name": "普通高校大学生创新创业类竞赛指数（2026版）发布",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23559-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "84719ec19d",
+      "name": "2026年高教社杯全国大学生数学建模竞赛",
+      "cat": "理工",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23557-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "2340d235b0",
+      "name": "【榜单赛事】第35届金犊奖国际竞赛",
+      "cat": "综合",
+      "level": "List",
+      "org": "旺旺集团、时报集团",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23552-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "56e0273af0",
+      "name": "【榜单赛事】2026年第十二届东方设计奖·全国高校创新设计大赛",
+      "cat": "媒传",
+      "level": "List",
+      "org": "国家工业设计研究院（生态设计领域）、湖北省文化创意产业协会",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23550-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "36ab09786b",
+      "name": "【榜单赛事】2026第七届东方创意之星创新设计大赛高教赛道作品征集",
+      "cat": "理工",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23555-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "277b4b5fde",
+      "name": "【词汇竞赛，6月6日截止】2026年第五届创研杯全国大学生英语词汇竞赛",
+      "cat": "人文",
+      "level": "List",
+      "org": "华夏文化促进会素质教育委员会，承办单位：黑龙江省创新教育研究院、我爱竞赛网，组织单位：创研杯全国大学生英语竞赛组委会",
+      "majors": "",
+      "deadline": "2026-06-06",
+      "url": "https://www.52jingsai.com/article-23524-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-06"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "128b113840",
+      "name": "第四届“两山杯”全国大学生乡村振兴创新创意创业大赛",
+      "cat": "综合",
+      "level": "List",
+      "org": "新华社品牌工作办公室、新华社浙江分社",
+      "majors": "",
+      "deadline": "2026-07-15",
+      "url": "https://www.52jingsai.com/article-23761-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-07-15"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "7498947105",
+      "name": "【榜单赛事】第十七届“工行杯”全国大学生金融科技创新大赛",
+      "cat": "经管",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23759-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "4eea8f864f",
+      "name": "【高博会参展赛事】2026年第十届普译奖全国大学生翻译比赛",
+      "cat": "人文",
+      "level": "List",
+      "org": "《海外英语》杂志",
+      "majors": "",
+      "deadline": "2026-06-02",
+      "url": "https://www.52jingsai.com/article-23448-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-02"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "f844212ce8",
+      "name": "【2026年挑战杯通知】第十五届“挑战杯”中国大学生创业计划竞赛",
+      "cat": "经管",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23746-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "4b6118d036",
+      "name": "【翻译竞赛，6月6日截止】2026年创研杯全国大学生英语翻译竞赛报名通知！",
+      "cat": "人文",
+      "level": "List",
+      "org": "华夏文化促进会素质教育委员会",
+      "majors": "",
+      "deadline": "2026-06-06",
+      "url": "https://www.52jingsai.com/article-23523-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-06"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "aedb8e12d1",
+      "name": "2026年度中国青年科技创新“揭榜挂帅”擂台赛第二批榜题等你来战！",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23745-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "b3c6997ca3",
+      "name": "【写作大赛，5月29日截止】2026年第四届“外文奖”大学生英语写作大赛报名通知",
+      "cat": "人文",
+      "level": "List",
+      "org": "中国外文局亚太传播中心",
+      "majors": "",
+      "deadline": "2026-05-29",
+      "url": "https://www.52jingsai.com/article-23444-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-05-29"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "70becfe2c9",
+      "name": "【6月4日截止】2026年第五届大学生英语翻译能力竞赛报名通知",
+      "cat": "人文",
+      "level": "List",
+      "org": "中国外文局亚太传播中心",
+      "majors": "",
+      "deadline": "2026-06-04",
+      "url": "https://www.52jingsai.com/article-23405-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-04"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "ff0cf13e3c",
+      "name": "【挑战杯】2026年度中国青年科技创新“揭榜挂帅”擂台赛",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-06-30",
+      "url": "https://www.52jingsai.com/article-23733-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-30"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "bb53798a67",
+      "name": "最高可获20万元！2026字节跳动奖学金申请启动！首次开放全球申请，增加奖励名额！",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-06-26",
+      "url": "https://www.52jingsai.com/article-23740-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-26"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "d935972623",
+      "name": "15万奖金池、实习秋招直通：MoonBit × CCF 开源创新大赛报名开启中！",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-07-10",
+      "url": "https://www.52jingsai.com/article-23739-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-07-10"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "ddc4e4641f",
+      "name": "生活未曾言语，却赠我以诗 | 2026徐志摩青春诗歌会征集",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": null,
+      "url": "https://www.52jingsai.com/article-23732-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "1a23f5ed52",
+      "name": "第十六届中国摄影金像奖申报",
+      "cat": "媒传",
+      "level": "List",
+      "org": "中国文学艺术界联合会、中国摄影家协会",
+      "majors": "",
+      "deadline": "2026-06-17",
+      "url": "https://www.52jingsai.com/article-23731-1.html",
+      "schoolRound": null,
+      "verified": false,
+      "source": "52jingsai",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "52jingsai",
+          "value": "2026-06-17"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "e5371e76b6",
+      "name": "第四届全国大学生网络安全知识竞赛",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-06-03",
+      "url": "https://www.saikr.com/act/5023",
+      "schoolRound": null,
+      "verified": false,
+      "source": "saikr",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "saikr",
+          "value": "2026-06-03"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "1684465698",
+      "name": "第八届全国大学生心理健康暨心理知识竞赛",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-06-30",
+      "url": "https://www.saikr.com/act/4947",
+      "schoolRound": null,
+      "verified": false,
+      "source": "saikr",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "saikr",
+          "value": "2026-06-30"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "d83941f166",
+      "name": "2026年第六届全国“防灾减灾科普先行”大学生火灾应对专题竞赛",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-06-30",
+      "url": "https://www.saikr.com/act/4893",
+      "schoolRound": null,
+      "verified": false,
+      "source": "saikr",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "saikr",
+          "value": "2026-06-30"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "fcee4f4746",
+      "name": "2026年第九届“远见者杯”全国大学生创新促进就业大赛-知识竞答",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-06-30",
+      "url": "https://www.saikr.com/act/4957",
+      "schoolRound": null,
+      "verified": false,
+      "source": "saikr",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "saikr",
+          "value": "2026-06-30"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "c5f1bbd86a",
+      "name": "2026年第六届大学生生态环境保护竞赛·省赛【第一关】",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-09-20",
+      "url": "https://www.saikr.com/act/5055",
+      "schoolRound": null,
+      "verified": false,
+      "source": "saikr",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "saikr",
+          "value": "2026-09-20"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "243e621652",
+      "name": "“悦·读者杯”——2026年青少年文学大赛",
+      "cat": "人文",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-10-31",
+      "url": "https://www.saikr.com/act/5081",
+      "schoolRound": null,
+      "verified": false,
+      "source": "saikr",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "saikr",
+          "value": "2026-10-31"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "591df2c7e4",
+      "name": "FCTI人格测试官网免费版",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-12-31",
+      "url": "https://www.saikr.com/act/5036",
+      "schoolRound": null,
+      "verified": false,
+      "source": "saikr",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "saikr",
+          "value": "2026-12-31"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "4a2348cca0",
+      "name": "2026第五届UNIPP大学生英语词汇应用大赛模拟比赛",
+      "cat": "人文",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-06-07",
+      "url": "https://www.saikr.com/act/4976",
+      "schoolRound": null,
+      "verified": false,
+      "source": "saikr",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "saikr",
+          "value": "2026-06-07"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "e066cedf36",
+      "name": "第四届“国学智慧·中华传承”全国大学生文化弘扬活动",
+      "cat": "综合",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-06-30",
+      "url": "https://www.saikr.com/act/4899",
+      "schoolRound": null,
+      "verified": false,
+      "source": "saikr",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "saikr",
+          "value": "2026-06-30"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "2d27797f58",
+      "name": "“悦·读者杯”——2026年青少年文学大赛-志愿者同步招募中",
+      "cat": "人文",
+      "level": "List",
+      "org": "",
+      "majors": "",
+      "deadline": "2026-10-31",
+      "url": "https://www.saikr.com/act/5084",
+      "schoolRound": null,
+      "verified": false,
+      "source": "saikr",
+      "pubDate": null,
+      "candidate": true,
+      "deadlineCandidates": [
+        {
+          "source": "saikr",
+          "value": "2026-10-31"
+        }
+      ],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "6126afe1f1",
+      "name": "2024 年全国大学生英语竞赛北京赛区北京大学初赛通知",
+      "cat": "人文",
+      "level": "List",
+      "org": "北京大学教务部",
+      "majors": "",
+      "deadline": null,
+      "url": "https://dean.pku.edu.cn/web/notice_details.php?id=582",
+      "schoolRound": null,
+      "verified": false,
+      "source": "pku_dean",
+      "pubDate": "2024-02-26",
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "b65229fc45",
+      "name": "2024全国大学生英语竞赛北京赛区北京大学考场安排",
+      "cat": "人文",
+      "level": "List",
+      "org": "北京大学教务部",
+      "majors": "",
+      "deadline": null,
+      "url": "https://dean.pku.edu.cn/web/notice_details.php?id=596",
+      "schoolRound": null,
+      "verified": false,
+      "source": "pku_dean",
+      "pubDate": "2024-04-16",
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    },
+    {
+      "id": "267028f88a",
+      "name": "北京大学第四届“外教社·词达人杯”全国大学生英语词汇能力大赛通知",
+      "cat": "人文",
+      "level": "List",
+      "org": "北京大学教务部",
+      "majors": "",
+      "deadline": null,
+      "url": "https://dean.pku.edu.cn/web/notice_details.php?id=587",
+      "schoolRound": null,
+      "verified": false,
+      "source": "pku_dean",
+      "pubDate": "2024-03-15",
+      "candidate": true,
+      "deadlineCandidates": [],
+      "deadlineConflict": false,
+      "lastScrapedAt": "2026-05-31T21:01:54.874Z"
+    }
+  ]
+}
