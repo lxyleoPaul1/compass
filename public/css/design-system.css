@@ -323,15 +323,28 @@ html[data-reduce-motion="true"] .btn.is-loading::after {
   border-radius: var(--radius-sm);
 }
 
-/* --- 移动端触摸 --- */
-@media (max-width: 430px) {
-  .wrap {
-    padding: 0 var(--space-4);
-  }
+/* --- 移动端触摸（断点与 index.html 统一：480 / 720 / 1024）--- */
+@media (max-width: 720px) {
   .page-crumb {
     font-size: var(--text-xs);
+    padding-top: var(--space-3);
   }
   .chat-wrap {
-    height: min(65vh, 560px);
+    height: min(calc(100dvh - 240px), 560px);
+  }
+  .chat-history-panel {
+    max-height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-wrap {
+    height: min(calc(100dvh - 220px), 520px);
+  }
+}
+
+@media (min-width: 1025px) {
+  .chat-wrap {
+    height: min(68vh, 640px);
   }
 }
